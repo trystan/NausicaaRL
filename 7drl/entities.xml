@@ -1,0 +1,665 @@
+<nausicaaRL>
+  
+  
+  <!-- *******************
+       ****** TILES ******
+       ******************* -->
+  <tiles>
+    <default>
+      <passable>True</passable>
+      <openable>False</openable>
+      <w>1</w>
+      <h>1</h>
+    </default>
+    <entity>
+      <name>dirt road</name>
+      <description>This is a dirt road, with the occasional pebble.</description>
+      <display>
+        <default>STILL</default>
+        <animation>
+          <name>STILL</name>
+          <spritesheet>spritesheet.png</spritesheet>
+          <random>True</random>
+          <repeat>False</repeat>
+          <nextAnimation>STILL</nextAnimation>
+          <frame>
+            <duration>-1</duration>
+            <x>0</x>
+            <y>0</y>
+            <w>1</w>
+            <h>1</h>
+          </frame>
+        </animation>
+      </display>
+    </entity>
+    
+    <entity>
+      <name>grass</name>
+      <description>Grass covers this part of the land.</description>
+      <display>
+        <default>STILL</default>
+        <animation>
+          <name>STILL</name>
+          <spritesheet>spritesheet.png</spritesheet>
+          <random>True</random>
+          <repeat>False</repeat>
+          <nextAnimation>STILL</nextAnimation>
+          <frame>
+            <duration>-1</duration>
+            <x>1</x>
+            <y>0</y>
+            <w>1</w>
+            <h>1</h>
+          </frame>
+        </animation>
+      </display>
+    </entity>
+    
+    <entity>
+      <name>wall</name>
+      <description>There is a wall here.</description>
+      <passable>False</passable>
+      <display>
+        <default>STILL</default>
+        <animation>
+          <name>STILL</name>
+          <spritesheet>spritesheet.png</spritesheet>
+          <random>True</random>
+          <repeat>False</repeat>
+          <nextAnimation>STILL</nextAnimation>
+          <frame>
+            <duration>-1</duration>
+            <x>2</x>
+            <y>0</y>
+            <w>1</w>
+            <h>1</h>
+          </frame>
+        </animation>
+      </display>
+    </entity>
+  </tiles>
+  
+  <!-- *******************
+       ****** PARTS ******
+       ******************* -->
+  
+  <parts>
+    <entity>
+      <name>left arm</name>
+      <hp>10</hp>
+    </entity>
+    <entity>
+      <name>right arm</name>
+      <hp>10</hp>
+    </entity>
+    <entity>
+      <name>torso</name>
+      <hp>10</hp>
+    </entity>
+    <entity>
+      <name>legs</name>
+      <hp>10</hp>
+    </entity>
+    <entity>
+      <name>head</name>
+      <hp>10</hp>
+    </entity>
+  </parts>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- *******************
+       ***** OBJECTS *****
+       ******************* -->
+  <objects>
+    <default>
+      <pickup>True</pickup>
+      <passable>True</passable>
+      <openable>False</openable>
+      <equipAt>[]</equipAt>
+      <protection>0</protection>
+      <damageMin>0</damageMin>
+      <damageMax>0</damageMax>
+      <attackSpeed>0</attackSpeed>
+      <w>1</w>
+      <h>1</h>
+    </default>
+    
+    <entity>
+      <name>rock</name>
+      <description>This is a heavy rock.</description>
+      <pickup>False</pickup>
+      <passable>False</passable>
+      <display>
+        <default>STILL</default>
+        <animation>
+          <name>STILL</name>
+          <spritesheet>spritesheet.png</spritesheet>
+          <random>True</random>
+          <repeat>False</repeat>
+          <nextAnimation>STILL</nextAnimation>
+          <frame>
+            <duration>-1</duration>
+            <x>3</x>
+            <y>0</y>
+            <w>1</w>
+            <h>1</h>
+          </frame>
+        </animation>
+      </display>
+    </entity>
+    
+    <entity>
+      <name>pebble</name>
+      <description>This is a little pebble.</description>
+      <equipAt>[left arm, right arm]</equipAt>
+      <display>
+        <default>STILL</default>
+        <animation>
+          <name>STILL</name>
+          <spritesheet>spritesheet.png</spritesheet>
+          <random>True</random>
+          <repeat>False</repeat>
+          <nextAnimation>STILL</nextAnimation>
+          <frame>
+            <duration>-1</duration>
+            <x>7</x>
+            <y>0</y>
+            <w>1</w>
+            <h>1</h>
+          </frame>
+          <frame>
+            <duration>-1</duration>
+            <x>7</x>  
+            <y>1</y>
+            <w>1</w>
+            <h>1</h>
+          </frame>
+        </animation>
+      </display>
+    </entity>
+    
+    <entity>
+      <name>leggings</name>
+      <description>A pair of leggings, protecting up to the knee.</description>
+      <equipAt>[legs]</equipAt>
+      <protection>2</protection>
+      <display>
+        <default>STILL</default>
+        <animation>
+          <name>STILL</name>
+          <spritesheet>spritesheet.png</spritesheet>
+          <random>True</random>
+          <repeat>False</repeat>
+          <nextAnimation>STILL</nextAnimation>
+          <frame>
+            <duration>-1</duration>
+            <x>2</x>
+            <y>2</y>
+            <w>1</w>
+            <h>1</h>
+          </frame>
+        </animation>
+      </display>
+    </entity>
+    
+    <entity>
+      <name>flight cap</name>
+      <description>A flight cap, with goggles and ear protection.</description>
+      <equipAt>[head]</equipAt>
+      <protection>1</protection>
+      <display>
+        <default>STILL</default>
+        <animation>
+          <name>STILL</name>
+          <spritesheet>spritesheet.png</spritesheet>
+          <random>True</random>
+          <repeat>False</repeat>
+          <nextAnimation>STILL</nextAnimation>
+          <frame>
+            <duration>-1</duration>
+            <x>5</x>
+            <y>2</y>
+            <w>1</w>
+            <h>1</h>
+          </frame>
+        </animation>
+      </display>
+    </entity>
+    
+    <entity>
+      <name>ceramic sword</name>
+      <description>A strong ceramic sword.</description>
+      <equipAt>[left arm, right arm]</equipAt>
+      <damageMin>2</damageMin>
+      <damageMax>5</damageMax>
+      <display>
+        <default>STILL</default>
+        <animation>
+          <name>STILL</name>
+          <spritesheet>spritesheet.png</spritesheet>
+          <random>True</random>
+          <repeat>False</repeat>
+          <nextAnimation>STILL</nextAnimation>
+          <frame>
+            <duration>-1</duration>
+            <x>3</x>
+            <y>2</y>
+            <w>1</w>
+            <h>1</h>
+          </frame>
+        </animation>
+      </display>
+    </entity>
+    
+    <entity>
+      <name>ceramic mace</name>
+      <description>A strong ceramic mace.</description>
+      <equipAt>[left arm, right arm]</equipAt>
+      <damageMin>1</damageMin>
+      <damageMax>3</damageMax>
+      <display>
+        <default>STILL</default>
+        <animation>
+          <name>STILL</name>
+          <spritesheet>spritesheet.png</spritesheet>
+          <random>True</random>
+          <repeat>False</repeat>
+          <nextAnimation>STILL</nextAnimation>
+          <frame>
+            <duration>-1</duration>
+            <x>4</x>
+            <y>2</y>
+            <w>1</w>
+            <h>1</h>
+          </frame>
+        </animation>
+      </display>
+    </entity>
+    
+    
+    
+    <entity>
+    <name>fence</name>
+      <description>This is a wooden fence.</description>
+      <pickup>False</pickup>
+      <passable>False</passable>
+      <display>
+        <default>STILL</default>
+        <animation>
+          <name>STILL</name>
+          <spritesheet>spritesheet.png</spritesheet>
+          <random>True</random>
+          <repeat>False</repeat>
+          <nextAnimation>STILL</nextAnimation>
+          <frame>
+            <duration>-1</duration>
+            <x>5</x>
+            <y>1</y>
+            <w>1</w>
+            <h>1</h>
+          </frame>
+          <frame>
+            <duration>-1</duration>
+            <x>6</x>
+            <y>1</y>
+            <w>1</w>
+            <h>1</h>
+          </frame>
+        </animation>
+      </display>
+    </entity>
+    
+    <entity>
+      <name>windmill</name>
+      <description>This a valley windmill.</description>
+      <pickup>False</pickup>
+      <passable>False</passable>
+      <w>2</w>
+      <h>2</h>
+      <display>
+        <default>STILL</default>
+        <animation>
+          <name>STILL</name>
+          <spritesheet>spritesheet.png</spritesheet>
+          <random>True</random>
+          <repeat>True</repeat>
+          <nextAnimation>STILL</nextAnimation>
+          <dx>-1</dx>
+          <dy>-2</dy>
+          <frame>
+            <duration>400</duration>
+            <x>8</x>
+            <y>1</y>
+            <w>4</w>
+            <h>4</h>
+          </frame>
+          <frame>
+            <duration>400</duration>
+            <x>12</x>
+            <y>1</y>
+            <w>4</w>
+            <h>4</h>
+          </frame><frame>
+            <duration>400</duration>
+            <x>16</x>
+            <y>1</y>
+            <w>4</w>
+            <h>4</h>
+          </frame><frame>
+            <duration>400</duration>
+            <x>20</x>
+            <y>1</y>
+            <w>4</w>
+            <h>4</h>
+          </frame><frame>
+            <duration>400</duration>
+            <x>24</x>
+            <y>1</y>
+            <w>4</w>
+            <h>4</h>
+          </frame>
+          <frame>
+            <duration>400</duration>
+            <x>28</x>
+            <y>1</y>
+            <w>4</w>
+            <h>4</h>
+          </frame>
+        </animation>
+      </display>
+    </entity>
+  </objects>
+  
+  
+  <!-- ********************
+       **** CONTAINERS ****
+       ******************** -->
+  <containers superclass="objects">
+    <default>
+      <pickup>False</pickup>
+      <passable>False</passable>
+      <isOpen>False</isOpen>
+      <openable>True</openable>
+    </default>
+    
+    <entity>
+      <name>chest</name>
+      <description>A well-crafted chest.</description>
+      <display>
+        <default>CLOSED</default>
+        <animation>
+          <name>CLOSED</name>
+          <spritesheet>spritesheet.png</spritesheet>
+          <random>False</random>
+          <repeat>False</repeat>
+          <nextAnimation>CLOSED</nextAnimation>
+          <frame>
+            <duration>-1</duration>
+            <x>5</x>
+            <y>0</y>
+            <w>1</w>
+            <h>1</h>
+          </frame>
+        </animation>
+        <animation>
+          <name>OPEN</name>
+          <spritesheet>spritesheet.png</spritesheet>
+          <random>False</random>
+          <repeat>False</repeat>
+          <nextAnimation>OPEN</nextAnimation>
+          <frame>
+            <duration>-1</duration>
+            <x>6</x>
+            <y>1</y>
+            <w>1</w>
+            <h>1</h>
+          </frame>
+        </animation>
+      </display>
+    </entity>
+    
+  </containers>
+  
+  
+  <!-- *********************
+       ******* DOORS *******
+       ********************* -->
+  <doors superclass="objects">
+    <default>
+      <pickup>False</pickup>
+      <passable>False</passable>
+      <isOpen>False</isOpen>
+      <openable>True</openable>
+    </default>
+    
+    <entity>
+      <name>fence gate</name>
+      <description>This is a fence gate.</description>
+      <display>
+        <default>CLOSED</default>
+        <animation>
+          <name>CLOSED</name>
+          <spritesheet>spritesheet.png</spritesheet>
+          <random>False</random>
+          <repeat>False</repeat>
+          <nextAnimation>CLOSED</nextAnimation>
+          <frame>
+            <duration>-1</duration>
+            <x>0</x>
+            <y>2</y>
+            <w>1</w>
+            <h>1</h>
+          </frame>
+        </animation>
+        <animation>
+          <name>OPEN</name>
+          <spritesheet>spritesheet.png</spritesheet>
+          <random>False</random>
+          <repeat>False</repeat>
+          <nextAnimation>OPEN</nextAnimation>
+          <frame>
+            <duration>-1</duration>
+            <x>1</x>
+            <y>2</y>
+            <w>1</w>
+            <h>1</h>
+          </frame>
+        </animation>
+      </display>
+    </entity>
+    
+  </doors>
+  
+  
+  
+  <!-- *********************
+       ******* CROPS *******
+       ********************* -->
+  <crops superclass="objects">
+    <default>
+      <pickup>False</pickup>
+    </default>
+    
+    <entity>
+      <name>cereal</name>
+      <description>Some cereal is planted here.</description>
+      <growth>[500, 500, 500]</growth>
+      <harvest>[False, False, True]</harvest>
+      <care>100</care>
+      <careLossInterval>25</careLossInterval>
+      <display>
+        <default>SEEDS</default>
+        <animation>
+          <name>SEEDS</name>
+          <spritesheet>spritesheet.png</spritesheet>
+          <random>False</random>
+          <repeat>False</repeat>
+          <nextAnimation>MIDWAY</nextAnimation>
+          <frame>
+            <duration>-1</duration>
+            <x>2</x>
+            <y>1</y>
+            <w>1</w>
+            <h>1</h>
+          </frame>
+        </animation>
+        <animation>
+          <name>MIDWAY</name>
+          <spritesheet>spritesheet.png</spritesheet>
+          <random>False</random>
+          <repeat>False</repeat>
+          <nextAnimation>GROWN</nextAnimation>
+          <frame>
+            <duration>-1</duration>
+            <x>3</x>
+            <y>1</y>
+            <w>1</w>
+            <h>1</h>
+          </frame>
+        </animation>
+        <animation>
+          <name>GROWN</name>
+          <spritesheet>spritesheet.png</spritesheet>
+          <random>False</random>
+          <repeat>False</repeat>
+          <nextAnimation>GROWN</nextAnimation>
+          <frame>
+            <duration>-1</duration>
+            <x>4</x>
+            <y>1</y>
+            <w>1</w>
+            <h>1</h>
+          </frame>
+        </animation>
+      </display>
+    </entity>
+    
+  </crops>
+  
+  
+  <!-- ********************
+       ****** ACTORS ******
+       ******************** -->
+  <actors superclass="objects">
+    <default>
+      <pickup>False</pickup>
+      <passable>False</passable>
+      <parts>[]</parts>
+    </default>
+    
+    <entity>
+      <name>peasant</name>
+      <description>This is a peasant.</description>
+      <parts>[legs, left arm, right arm, torso, head]</parts>
+      <display>
+        <default>STILL</default>
+        <animation>
+          <name>STILL</name>
+          <spritesheet>spritesheet.png</spritesheet>
+          <random>True</random>
+          <repeat>False</repeat>
+          <nextAnimation>STILL</nextAnimation>
+          <frame>
+            <duration>-1</duration>
+            <x>4</x>
+            <y>0</y>
+            <w>1</w>
+            <h>1</h>
+          </frame>
+        </animation>
+      </display>
+    </entity>
+    
+    <entity>
+      <name>teto</name>
+      <description>This is a foxsquirrel.</description>
+      <display>
+        <default>STILL</default>
+        <animation>
+          <name>STILL</name>
+          <spritesheet>spritesheet.png</spritesheet>
+          <random>True</random>
+          <repeat>False</repeat>
+          <nextAnimation>STILL</nextAnimation>
+          <frame>
+            <duration>-1</duration>
+            <x>0</x>
+            <y>1</y>
+            <w>1</w>
+            <h>1</h>
+          </frame>
+        </animation>
+      </display>
+    </entity>
+   
+    <entity>
+      <name>ohmu</name>
+      <description>This is Ohmu.</description>
+      <display>
+        <default>STILL</default>
+        <animation>
+          <name>STILL</name>
+          <spritesheet>spritesheet.png</spritesheet>
+          <random>True</random>
+          <repeat>False</repeat>
+          <nextAnimation>STILL</nextAnimation>
+          <frame>
+            <duration>-1</duration>
+            <x>1</x>
+            <y>1</y>
+            <w>1</w>
+            <h>1</h>
+          </frame>
+        </animation>
+      </display>
+    </entity>	
+    
+  </actors>
+  
+  
+  
+  <!-- ********************
+       ******* HERO *******
+       ******************** -->
+  <heros superclass="actors">
+    <default>
+      <pickup>False</pickup>
+      <passable>False</passable>
+      <openable>False</openable>
+      <w>1</w>
+      <h>1</h>
+    </default>
+    
+    <entity>
+      <name>nausicaa</name>
+      <description>This is a princess.</description>
+      <parts>[head, torso, left arm, right arm, legs]</parts>
+      <display>
+        <default>STILL</default>
+        <animation>
+          <name>STILL</name>
+          <spritesheet>spritesheet.png</spritesheet>
+          <random>True</random>
+          <repeat>False</repeat>
+          <nextAnimation>STILL</nextAnimation>
+          <frame>
+            <duration>-1</duration>
+            <x>8</x>
+            <y>0</y>
+            <w>1</w>
+            <h>1</h>
+          </frame>
+        </animation>
+      </display>
+    </entity>
+    
+  </heros>
+</nausicaaRL>

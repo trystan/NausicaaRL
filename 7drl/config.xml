@@ -1,0 +1,377 @@
+<config>
+  <display>
+    <TILE_WIDTH>32</TILE_WIDTH>
+    <TILE_HEIGHT>32</TILE_HEIGHT>
+    <RIGHT_MENU_SIZE>300</RIGHT_MENU_SIZE>
+    <BOTTOM_MENU_SIZE>200</BOTTOM_MENU_SIZE>
+    <DISPLAY_TILES_X>29</DISPLAY_TILES_X>
+    <DISPLAY_TILES_Y>19</DISPLAY_TILES_Y>
+    <FPS_LIMIT>60</FPS_LIMIT>
+  </display>
+  <keyconfig>
+    <event>
+      <description>Wait.</description>
+      <name>MOVE_WAIT</name>
+      <keys>K_PERIOD,K_KP_PERIOD,K_KP5</keys>
+      <type>MOVEMENT</type>
+    </event>
+    <event>
+      <description>Move up.</description>
+      <name>MOVE_UP</name>
+      <keys>K_UP,K_KP8</keys>
+      <type>MOVEMENT</type>
+    </event>
+    <event>
+      <description>Move down.</description>
+      <name>MOVE_DOWN</name>
+      <keys>K_DOWN,K_KP2</keys>
+      <type>MOVEMENT</type>
+    </event>
+    <event>
+      <description>Move left.</description>
+      <name>MOVE_LEFT</name>
+      <keys>K_LEFT,K_KP4</keys>
+      <type>MOVEMENT</type>
+    </event>
+    <event>
+      <description>Move right.</description>
+      <name>MOVE_RIGHT</name>
+      <keys>K_RIGHT,K_KP6</keys>
+      <type>MOVEMENT</type>
+    </event>
+    <event>
+      <description>Move up and left.</description>
+      <name>MOVE_UP_LEFT</name>
+      <keys>K_HOME,K_KP7</keys>
+      <type>MOVEMENT</type>
+    </event>
+    <event>
+      <description>Move up and right.</description>
+      <name>MOVE_UP_RIGHT</name>
+      <keys>K_PAGEUP,K_KP9</keys>
+      <type>MOVEMENT</type>
+    </event>
+    <event>
+      <description>Move down and left.</description>
+      <name>MOVE_DOWN_LEFT</name>
+      <keys>K_END,K_KP1</keys>
+      <type>MOVEMENT</type>
+    </event>
+    <event>
+      <description>Move down and right.</description>
+      <name>MOVE_DOWN_RIGHT</name>
+      <keys>K_PAGEDOWN,K_KP3</keys>
+      <type>MOVEMENT</type>
+    </event>
+    <event>
+      <description>Move above / climb.</description>
+      <name>MOVE_CLIMB</name>
+      <keys>K_MINUS,K_KP_MINUS</keys>
+      <type>MOVEMENT</type>
+    </event>
+    <event>
+      <description>Move below / descend.</description>
+      <name>MOVE_DESCEND</name>
+      <keys>K_PLUS,K_KP_PLUS</keys>
+      <type>MOVEMENT</type>
+    </event>
+    
+    <event>
+      <description>Get / pickup.</description>
+      <name>PICKUP</name>
+      <keys>K_g,K_COMMA</keys>
+    </event>
+    <event>
+      <description>Drop stuff.</description>
+      <name>DROP</name>
+      <keys>K_d</keys>
+    </event>
+    
+    <event>
+      <description>Equipment screen.</description>
+      <name>EQUIPMENT</name>
+      <keys>K_e</keys>
+    </event>
+    
+    <event>
+      <description>Scroll up.</description>
+      <name>SCROLL_UP</name>
+      <keys>K_MINUS,K_KP_MINUS</keys>
+      <type>RELATIVE_SELECTION</type>
+    </event>
+    <event>
+      <description>Scroll down.</description>
+      <name>SCROLL_DOWN</name>
+      <keys>K_PLUS,K_KP_PLUS</keys>
+      <type>RELATIVE_SELECTION</type>
+    </event>
+    
+    <event>
+      <description>Move selection up.</description>
+      <name>SELECT_UP</name>
+      <keys>K_UP,K_KP8</keys>
+      <type>RELATIVE_SELECTION</type>
+    </event>
+    <event>
+      <description>Move selection down.</description>
+      <name>SELECT_DOWN</name>
+      <keys>K_DOWN,K_KP2</keys>
+      <type>RELATIVE_SELECTION</type>
+    </event>
+    <event>
+      <description>Move selection left.</description>
+      <name>SELECT_LEFT</name>
+      <keys>K_LEFT,K_KP4</keys>
+      <type>RELATIVE_SELECTION</type>
+    </event>
+    <event>
+      <description>Move selection right.</description>
+      <name>SELECT_RIGHT</name>
+      <keys>K_RIGHT,K_KP6</keys>
+      <type>RELATIVE_SELECTION</type>
+    </event>
+    <event>
+      <description>Move selection up and left.</description>
+      <name>SELECT_UP_LEFT</name>
+      <keys>K_HOME,K_KP7</keys>
+      <type>RELATIVE_SELECTION</type>
+    </event>
+    <event>
+      <description>Move selection up and right.</description>
+      <name>SELECT_UP_RIGHT</name>
+      <keys>K_PAGEUP,K_KP9</keys>
+      <type>RELATIVE_SELECTION</type>
+    </event>
+    <event>
+      <description>Move selection down and left.</description>
+      <name>SELECT_DOWN_LEFT</name>
+      <keys>K_END,K_KP1</keys>
+      <type>RELATIVE_SELECTION</type>
+    </event>
+    <event>
+      <description>Move selection down and right.</description>
+      <name>SELECT_DOWN_RIGHT</name>
+      <keys>K_PAGEDOWN,K_KP3</keys>
+      <type>RELATIVE_SELECTION</type>
+    </event>
+    
+    <event>
+      <description>Wear equipment / wield weapons.</description>
+      <name>WEAR</name>
+      <keys>K_w</keys>
+    </event>
+    <event>
+      <description>Remove equipment / weapons.</description>
+      <name>REMOVE</name>
+      <keys>K_r</keys>
+    </event>
+    <event>
+      <description>Eat / drink something.</description>
+      <name>EAT</name>
+      <keys>K_e</keys>
+    </event>
+    <event>
+      <description>Use something.</description>
+      <name>USE</name>
+      <keys>K_u</keys>
+    </event>
+    
+    <event>
+      <description>Selection (a)</description>
+      <name>SELECT_A</name>
+      <keys>K_a</keys>
+      <type>SELECTION</type>
+    </event>
+    <event>
+      <description>Selection (b)</description>
+      <name>SELECT_B</name>
+      <keys>K_b</keys>
+      <type>SELECTION</type>
+    </event>
+    <event>
+      <description>Selection (c)</description>
+      <name>SELECT_C</name>
+      <keys>K_c</keys>
+      <type>SELECTION</type>
+    </event>
+    <event>
+      <description>Selection (d)</description>
+      <name>SELECT_D</name>
+      <keys>K_d</keys>
+      <type>SELECTION</type>
+    </event>
+    <event>
+      <description>Selection (e)</description>
+      <name>SELECT_E</name>
+      <keys>K_e</keys>
+      <type>SELECTION</type>
+    </event>
+    <event>
+      <description>Selection (f)</description>
+      <name>SELECT_F</name>
+      <keys>K_f</keys>
+      <type>SELECTION</type>
+    </event>
+    <event>
+      <description>Selection (g)</description>
+      <name>SELECT_G</name>
+      <keys>K_g</keys>
+      <type>SELECTION</type>
+    </event>
+    <event>
+      <description>Selection (h)</description>
+      <name>SELECT_H</name>
+      <keys>K_h</keys>
+      <type>SELECTION</type>
+    </event>
+    <event>
+      <description>Selection (i)</description>
+      <name>SELECT_I</name>
+      <keys>K_i</keys>
+      <type>SELECTION</type>
+    </event>
+    <event>
+      <description>Selection (j)</description>
+      <name>SELECT_J</name>
+      <keys>K_j</keys>
+      <type>SELECTION</type>
+    </event>
+    <event>
+      <description>Selection (k)</description>
+      <name>SELECT_K</name>
+      <keys>K_k</keys>
+      <type>SELECTION</type>
+    </event>
+    <event>
+      <description>Selection (l)</description>
+      <name>SELECT_L</name>
+      <keys>K_l</keys>
+      <type>SELECTION</type>
+    </event>
+    <event>
+      <description>Selection (m)</description>
+      <name>SELECT_M</name>
+      <keys>K_m</keys>
+      <type>SELECTION</type>
+    </event>
+    <event>
+      <description>Selection (n)</description>
+      <name>SELECT_N</name>
+      <keys>K_n</keys>
+      <type>SELECTION</type>
+    </event>
+    <event>
+      <description>Selection (o)</description>
+      <name>SELECT_O</name>
+      <keys>K_o</keys>
+      <type>SELECTION</type>
+    </event>
+    <event>
+      <description>Selection (p)</description>
+      <name>SELECT_P</name>
+      <keys>K_p</keys>
+      <type>SELECTION</type>
+    </event>
+    <event>
+      <description>Selection (q)</description>
+      <name>SELECT_Q</name>
+      <keys>K_q</keys>
+      <type>SELECTION</type>
+    </event>
+    <event>
+      <description>Selection (r)</description>
+      <name>SELECT_R</name>
+      <keys>K_r</keys>
+      <type>SELECTION</type>
+    </event>
+    <event>
+      <description>Selection (s)</description>
+      <name>SELECT_S</name>
+      <keys>K_s</keys>
+      <type>SELECTION</type>
+    </event>
+    <event>
+      <description>Selection (t)</description>
+      <name>SELECT_T</name>
+      <keys>K_t</keys>
+      <type>SELECTION</type>
+    </event>
+    <event>
+      <description>Selection (u)</description>
+      <name>SELECT_U</name>
+      <keys>K_u</keys>
+      <type>SELECTION</type>
+    </event>
+    <event>
+      <description>Selection (v)</description>
+      <name>SELECT_V</name>
+      <keys>K_v</keys>
+      <type>SELECTION</type>
+    </event>
+    <event>
+      <description>Selection (w)</description>
+      <name>SELECT_W</name>
+      <keys>K_w</keys>
+      <type>SELECTION</type>
+    </event>
+    <event>
+      <description>Selection (x)</description>
+      <name>SELECT_X</name>
+      <keys>K_x</keys>
+      <type>SELECTION</type>
+    </event>
+    <event>
+      <description>Selection (y)</description>
+      <name>SELECT_Y</name>
+      <keys>K_y</keys>
+      <type>SELECTION</type>
+    </event>
+    <event>
+      <description>Selection (z)</description>
+      <name>SELECT_Z</name>
+      <keys>K_z</keys>
+      <type>SELECTION</type>
+    </event>
+
+    <event>
+      <description>Exit / escape.</description>
+      <name>EXIT</name>
+      <keys>K_ESCAPE</keys>
+    </event>
+    
+    <event>
+      <description>Enter / Accept</description>
+      <name>ACCEPT</name>
+      <keys>K_RETURN,K_KP_ENTER</keys>
+    </event>
+    
+    <event>
+      <description>Switch.</description>
+      <name>SWITCH</name>
+      <keys>K_TAB</keys>
+    </event>
+    
+    <event>
+      <description>Open a container or a door.</description>
+      <name>OPEN</name>
+      <keys>K_o</keys>
+    </event>
+    
+    <event>
+      <description>Close a container or a door.</description>
+      <name>CLOSE</name>
+      <keys>K_c</keys>
+    </event>
+  </keyconfig>
+</config>
+
+
+
+
+
+
+
+
+
+
+
