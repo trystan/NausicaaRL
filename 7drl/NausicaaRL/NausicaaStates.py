@@ -1,5 +1,8 @@
-from GameState import *
-from World import Village
+from nEngine.GameState import GameState
+from nEngine.graphics.Display import *
+from nEngine.graphics.nGUI.nGUI import *
+from NausicaaRL.NausicaaWorlds import *
+from nEngine.Input import *
 
 class TitleScreenState(GameState):
   """This is just the title screen."""
@@ -17,12 +20,12 @@ class TitleScreenState(GameState):
     """Loads the background and sets it up according to resolution."""
     
     # Load background image and scale it so it fits nicely into the window
-    background = View.getImage("nausicaa.jpg")
-    background = View.scaleToWindow(background)
+    background = Display.getImage("data/nausicaa.jpg")
+    background = Display.scaleToWindow(background)
     
     # Align its top-right to the top-right of the window
     (w, _) = background.get_size()
-    posX = View.WINDOW_WIDTH - w
+    posX = Display.WINDOW_WIDTH - w
     posY = 0
     sprite = Sprite(background, (posX, posY))
     
@@ -67,12 +70,12 @@ class ExploringState(GameState):
   def initialise(self):
     """Initialises menus, etc"""
     GameState.initialise(self)
-    gameMap = GameMap(View.MapX, View.MapY, View.MapW, View.MapH,
+    gameMap = GameMap(Display.MapX, Display.MapY, Display.MapW, Display.MapH,
                   "The Valley of the Wind", self._world, self._world.hero)
     # Add the map as as a purely graphical element
     self.addMenu(gameMap, False)
     
-    charDisplay = CharDisplay(View.MapW, 0, View.RIGHT_MENU_SIZE, 200,
+    charDisplay = CharDisplay(Display.MapW, 0, Display.RIGHT_MENU_SIZE, 200,
                   "Nausicaa's equipment", self._world.hero)
     # Add the char display as as a purely graphical element
     self.addMenu(charDisplay, False)
@@ -83,7 +86,7 @@ class ExploringState(GameState):
     self.createMessageMenu()
     
   def createMessageMenu(self):
-    self._messageHistory = TextBox(0, View.MapH, View.MapW, View.BOTTOM_MENU_SIZE,
+    self._messageHistory = TextBox(0, Display.MapH, Display.MapW, Display.BOTTOM_MENU_SIZE,
                                    "Message History")
     self.addMenu(self._messageHistory)
   
@@ -145,8 +148,8 @@ class ExploringState(GameState):
     """Responds to pick up action. Creates a menu with items and waits for that
     input and sets its callback."""
     items = self._world.hero.parent.getPickableItems()
-    menu = ListSelector(View.MapW, 0,
-                        View.RIGHT_MENU_SIZE, 200,
+    menu = ListSelector(Display.MapW, 0,
+                        Display.RIGHT_MENU_SIZE, 200,
                         "Pick up which items?",
                         [item.bp.name for item in items], items)
     menu.setCallback(self.heroPickup, [menu])
@@ -171,8 +174,8 @@ class ExploringState(GameState):
         items[i] = items[i] + " [" + equippedAt.bp.name + "]"
         
     
-    menu = ListSelector(View.MapW, 0,
-                        View.RIGHT_MENU_SIZE, 200,
+    menu = ListSelector(Display.MapW, 0,
+                        Display.RIGHT_MENU_SIZE, 200,
                         "Drop which items?",
                         items, values)
     menu.setCallback(self.heroDrop, [menu])
@@ -196,8 +199,8 @@ class ExploringState(GameState):
     else:
       text = "Close in what direction?"
     
-    menu = DirectionSelector(View.MapW, 0,
-                        View.RIGHT_MENU_SIZE, 200,
+    menu = DirectionSelector(Display.MapW, 0,
+                        Display.RIGHT_MENU_SIZE, 200,
                         "Direction selection", text)
     menu.setCallback(self.openWithDirection, [menu, isOpen])
     self.addMenu(menu)
@@ -223,15 +226,15 @@ class ExploringState(GameState):
     if len(items) == 1:
       function(items)
     elif len(items) > 1:
-      menu = ListSingleSelector(View.MapW, 0,
-                        View.RIGHT_MENU_SIZE, 200,
+      menu = ListSingleSelector(Display.MapW, 0,
+                        Display.RIGHT_MENU_SIZE, 200,
                           text, [item.bp.name for item in items], items)
       menu.setCallback(function, [])
       self.addMenu(menu)
     else:
-      menu = Dialog((View.MapW - View.RIGHT_MENU_SIZE) // 2,
-                          View.MapH // 2 - 50,
-                          View.RIGHT_MENU_SIZE, 100,
+      menu = Dialog((Display.MapW - Display.RIGHT_MENU_SIZE) // 2,
+                          Display.MapH // 2 - 50,
+                          Display.RIGHT_MENU_SIZE, 100,
                           "Oops!", "There's nothing to open/close here")
       self.addMenu(menu)
       menu.setCallback(self.removeMenu, [menu])
@@ -241,8 +244,8 @@ class ExploringState(GameState):
     """Opens up an equipment screen."""
     w = 600
     h = 400
-    x = View.MapX + View.MapW // 2 - w // 2
-    y = View.MapY + View.MapH // 2 - h // 2
+    x = Display.MapX + Display.MapW // 2 - w // 2
+    y = Display.MapY + Display.MapH // 2 - h // 2
     menu = EquipmentScreen(x, y, w, h, self._world.hero)
     self.addMenu(menu)
     menu.setCallback(self.equip, [menu])
@@ -266,9 +269,9 @@ class ExploringState(GameState):
   
   def quitMenu(self):
     """Opens up a menu that asks whether the user wants to quit or not."""
-    menu = ListSingleSelector((View.MapW - View.RIGHT_MENU_SIZE//2) // 2,
-                          View.MapH // 2 - 50,
-                          View.RIGHT_MENU_SIZE//2, 100,
+    menu = ListSingleSelector((Display.MapW - Display.RIGHT_MENU_SIZE//2) // 2,
+                          Display.MapH // 2 - 50,
+                          Display.RIGHT_MENU_SIZE//2, 100,
                               "Really exit?",
                               ["Exit", "Cancel"], [True, False])
     menu.setCallback(self.quitExplore, [menu])

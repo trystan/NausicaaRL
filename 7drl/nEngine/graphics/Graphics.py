@@ -1,4 +1,4 @@
-from Rand import Rand
+from nEngine.Rand import Rand
 
 class Frame:
   """This class maintains all information pertaining to a single drawn frame of

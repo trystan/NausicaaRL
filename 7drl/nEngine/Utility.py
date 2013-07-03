@@ -1,4 +1,4 @@
-from Input import *
+from nEngine.Input import *
 
 
 class Utility:

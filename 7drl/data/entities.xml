@@ -18,7 +18,7 @@
         <default>STILL</default>
         <animation>
           <name>STILL</name>
-          <spritesheet>spritesheet.png</spritesheet>
+          <spritesheet>data/spritesheet.png</spritesheet>
           <random>True</random>
           <repeat>False</repeat>
           <nextAnimation>STILL</nextAnimation>
@@ -40,7 +40,7 @@
         <default>STILL</default>
         <animation>
           <name>STILL</name>
-          <spritesheet>spritesheet.png</spritesheet>
+          <spritesheet>data/spritesheet.png</spritesheet>
           <random>True</random>
           <repeat>False</repeat>
           <nextAnimation>STILL</nextAnimation>
@@ -63,7 +63,7 @@
         <default>STILL</default>
         <animation>
           <name>STILL</name>
-          <spritesheet>spritesheet.png</spritesheet>
+          <spritesheet>data/spritesheet.png</spritesheet>
           <random>True</random>
           <repeat>False</repeat>
           <nextAnimation>STILL</nextAnimation>
@@ -141,7 +141,7 @@
         <default>STILL</default>
         <animation>
           <name>STILL</name>
-          <spritesheet>spritesheet.png</spritesheet>
+          <spritesheet>data/spritesheet.png</spritesheet>
           <random>True</random>
           <repeat>False</repeat>
           <nextAnimation>STILL</nextAnimation>
@@ -164,7 +164,7 @@
         <default>STILL</default>
         <animation>
           <name>STILL</name>
-          <spritesheet>spritesheet.png</spritesheet>
+          <spritesheet>data/spritesheet.png</spritesheet>
           <random>True</random>
           <repeat>False</repeat>
           <nextAnimation>STILL</nextAnimation>
@@ -195,7 +195,7 @@
         <default>STILL</default>
         <animation>
           <name>STILL</name>
-          <spritesheet>spritesheet.png</spritesheet>
+          <spritesheet>data/spritesheet.png</spritesheet>
           <random>True</random>
           <repeat>False</repeat>
           <nextAnimation>STILL</nextAnimation>
@@ -219,7 +219,7 @@
         <default>STILL</default>
         <animation>
           <name>STILL</name>
-          <spritesheet>spritesheet.png</spritesheet>
+          <spritesheet>data/spritesheet.png</spritesheet>
           <random>True</random>
           <repeat>False</repeat>
           <nextAnimation>STILL</nextAnimation>
@@ -244,7 +244,7 @@
         <default>STILL</default>
         <animation>
           <name>STILL</name>
-          <spritesheet>spritesheet.png</spritesheet>
+          <spritesheet>data/spritesheet.png</spritesheet>
           <random>True</random>
           <repeat>False</repeat>
           <nextAnimation>STILL</nextAnimation>
@@ -269,7 +269,7 @@
         <default>STILL</default>
         <animation>
           <name>STILL</name>
-          <spritesheet>spritesheet.png</spritesheet>
+          <spritesheet>data/spritesheet.png</spritesheet>
           <random>True</random>
           <repeat>False</repeat>
           <nextAnimation>STILL</nextAnimation>
@@ -295,7 +295,7 @@
         <default>STILL</default>
         <animation>
           <name>STILL</name>
-          <spritesheet>spritesheet.png</spritesheet>
+          <spritesheet>data/spritesheet.png</spritesheet>
           <random>True</random>
           <repeat>False</repeat>
           <nextAnimation>STILL</nextAnimation>
@@ -328,7 +328,7 @@
         <default>STILL</default>
         <animation>
           <name>STILL</name>
-          <spritesheet>spritesheet.png</spritesheet>
+          <spritesheet>data/spritesheet.png</spritesheet>
           <random>True</random>
           <repeat>True</repeat>
           <nextAnimation>STILL</nextAnimation>
@@ -397,7 +397,7 @@
         <default>CLOSED</default>
         <animation>
           <name>CLOSED</name>
-          <spritesheet>spritesheet.png</spritesheet>
+          <spritesheet>data/spritesheet.png</spritesheet>
           <random>False</random>
           <repeat>False</repeat>
           <nextAnimation>CLOSED</nextAnimation>
@@ -411,7 +411,7 @@
         </animation>
         <animation>
           <name>OPEN</name>
-          <spritesheet>spritesheet.png</spritesheet>
+          <spritesheet>data/spritesheet.png</spritesheet>
           <random>False</random>
           <repeat>False</repeat>
           <nextAnimation>OPEN</nextAnimation>
@@ -447,7 +447,7 @@
         <default>CLOSED</default>
         <animation>
           <name>CLOSED</name>
-          <spritesheet>spritesheet.png</spritesheet>
+          <spritesheet>data/spritesheet.png</spritesheet>
           <random>False</random>
           <repeat>False</repeat>
           <nextAnimation>CLOSED</nextAnimation>
@@ -461,7 +461,7 @@
         </animation>
         <animation>
           <name>OPEN</name>
-          <spritesheet>spritesheet.png</spritesheet>
+          <spritesheet>data/spritesheet.png</spritesheet>
           <random>False</random>
           <repeat>False</repeat>
           <nextAnimation>OPEN</nextAnimation>
@@ -499,7 +499,7 @@
         <default>SEEDS</default>
         <animation>
           <name>SEEDS</name>
-          <spritesheet>spritesheet.png</spritesheet>
+          <spritesheet>data/spritesheet.png</spritesheet>
           <random>False</random>
           <repeat>False</repeat>
           <nextAnimation>MIDWAY</nextAnimation>
@@ -513,7 +513,7 @@
         </animation>
         <animation>
           <name>MIDWAY</name>
-          <spritesheet>spritesheet.png</spritesheet>
+          <spritesheet>data/spritesheet.png</spritesheet>
           <random>False</random>
           <repeat>False</repeat>
           <nextAnimation>GROWN</nextAnimation>
@@ -527,7 +527,7 @@
         </animation>
         <animation>
           <name>GROWN</name>
-          <spritesheet>spritesheet.png</spritesheet>
+          <spritesheet>data/spritesheet.png</spritesheet>
           <random>False</random>
           <repeat>False</repeat>
           <nextAnimation>GROWN</nextAnimation>
@@ -563,7 +563,7 @@
         <default>STILL</default>
         <animation>
           <name>STILL</name>
-          <spritesheet>spritesheet.png</spritesheet>
+          <spritesheet>data/spritesheet.png</spritesheet>
           <random>True</random>
           <repeat>False</repeat>
           <nextAnimation>STILL</nextAnimation>
@@ -585,7 +585,7 @@
         <default>STILL</default>
         <animation>
           <name>STILL</name>
-          <spritesheet>spritesheet.png</spritesheet>
+          <spritesheet>data/spritesheet.png</spritesheet>
           <random>True</random>
           <repeat>False</repeat>
           <nextAnimation>STILL</nextAnimation>
@@ -607,7 +607,7 @@
         <default>STILL</default>
         <animation>
           <name>STILL</name>
-          <spritesheet>spritesheet.png</spritesheet>
+          <spritesheet>data/spritesheet.png</spritesheet>
           <random>True</random>
           <repeat>False</repeat>
           <nextAnimation>STILL</nextAnimation>
@@ -646,7 +646,7 @@
         <default>STILL</default>
         <animation>
           <name>STILL</name>
-          <spritesheet>spritesheet.png</spritesheet>
+          <spritesheet>data/spritesheet.png</spritesheet>
           <random>True</random>
           <repeat>False</repeat>
           <nextAnimation>STILL</nextAnimation>

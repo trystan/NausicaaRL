@@ -1,9 +1,8 @@
-from time import *
+import pygame
+from time import time
+from nEngine.graphics.Display import Display
+from nEngine.Input import Input
 
-from EntityManager import *
-from GameModel import *
-from nGUI import *
-from Input import *
 
 
 class GameManager:
@@ -84,7 +83,7 @@ class GameState:
     """Execute this state's main loop."""
     self.done = False
     
-    frameinterval = 1000 // View.FPS_LIMIT # milliseconds between frames
+    frameinterval = 1000 // Display.FPS_LIMIT # milliseconds between frames
     oldTime = 0
     while not self.done:
       curTime = time()
@@ -99,7 +98,7 @@ class GameState:
       self.draw()
       #print("LOL: " + str(1000*(time() - lala)))
       
-      View.flip() # redraw
+      Display.flip() # redraw
       
       
       Input.processInput(self)

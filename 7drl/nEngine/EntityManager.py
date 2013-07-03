@@ -1,9 +1,10 @@
 import copy
 import xml.etree.ElementTree as ElementTree
 
-from GameModel import *
-from Display import Animation, DisplayBlueprint, Frame
-from View import View
+from nEngine.model.GameModel import *
+from nEngine.graphics.Graphics import Animation, DisplayBlueprint, Frame
+from nEngine.graphics.Display import Display
+from nEngine.Utility import Utility
 
 """This module will read the data in the XML files and handle loading of
 graphics and of base information for each type of entity."""
@@ -181,7 +182,7 @@ class EntityManager:
     attribs["frames"] = [EntityManager.parseFrame(child) for child in root.findall("frame")]
     
     # Deal with spritesheet
-    attribs["spritesheet"] = View.getImage(attribs["spritesheet"])
+    attribs["spritesheet"] = Display.getImage(attribs["spritesheet"])
     
     return Animation(**attribs)
   

@@ -1,7 +1,8 @@
 from collections import deque
 
-from View import *
-from Input import *
+from nEngine.graphics.Display import Display
+from nEngine.Input import *
+from nEngine.Utility import Utility
 
 """"GUI stuff!"""
 
@@ -26,7 +27,7 @@ class Sprite:
     self._sprite = surface
     
   def draw(self):
-    View.draw(self._sprite, self._pos, self._area)
+    Display.draw(self._sprite, self._pos, self._area)
 
 
 class Frame:
@@ -36,8 +37,8 @@ class Frame:
   def init():
     """Initialises border related data."""
     # Space necessary for horizontal and vertical borders
-    Frame.BORDER_WIDTH = View.TEXT_HEIGHT
-    Frame.BORDER_HEIGHT = View.TEXT_HEIGHT
+    Frame.BORDER_WIDTH = Display.TEXT_HEIGHT
+    Frame.BORDER_HEIGHT = Display.TEXT_HEIGHT
   
   def __init__(self, x, y, w, h, title="???", background=True, border=True):
     """Needs position, size and title."""
@@ -66,10 +67,10 @@ class Frame:
   def prepSurfaces(self):
     """Renders the title surface"""
     if self._border:
-      self._titleSurface = View.renderText(self._title, colour=(122,122,122))
-      self._titleSurfaceFocus = View.renderText(self._title, colour=(255,255,255))
+      self._titleSurface = Display.renderText(self._title, colour=(122,122,122))
+      self._titleSurfaceFocus = Display.renderText(self._title, colour=(255,255,255))
     if self._background:
-      self._backgroundSurface = View.generateBackground((self._w, self._h), (0, 0, 0))
+      self._backgroundSurface = Display.generateBackground((self._w, self._h), (0, 0, 0))
   
   
   def prepDrawData(self):
@@ -84,16 +85,16 @@ class Frame:
                        self._y + self._h - Frame.BORDER_HEIGHT // 2)
     self._BottomRight = (self._x + self._w - Frame.BORDER_WIDTH // 2,
                         self._y + self._h - Frame.BORDER_HEIGHT // 2)
-    self._TitleLeft = (self._x + Frame.BORDER_WIDTH // 2 + View.TEXT_WIDTH,
+    self._TitleLeft = (self._x + Frame.BORDER_WIDTH // 2 + Display.TEXT_WIDTH,
                       self._y + Frame.BORDER_HEIGHT// 2)
     self._TitleRight = (self._x + Frame.BORDER_WIDTH // 2 +
-                        2*View.TEXT_WIDTH + self._titleSurface.get_width(),
+                        2*Display.TEXT_WIDTH + self._titleSurface.get_width(),
                       self._y + Frame.BORDER_HEIGHT // 2)
   
   def draw(self):
     # Draw background
     if self._background:
-      View.draw(self._backgroundSurface, (self._x, self._y))
+      Display.draw(self._backgroundSurface, (self._x, self._y))
     # Draw border and title
     if self._border:
       if self._inFocus:
@@ -102,12 +103,12 @@ class Frame:
       else:
         colour = (122,122,122)
         titleSurface = self._titleSurface
-      View.drawLine(colour, self._TopLeft, self._TitleLeft)
-      View.drawLine(colour, self._TitleRight, self._TopRight)
-      View.drawLine(colour, self._TopRight, self._BottomRight)
-      View.drawLine(colour, self._BottomRight, self._BottomLeft)
-      View.drawLine(colour, self._BottomLeft, self._TopLeft)
-      View.draw(titleSurface, (self._x + ListSelector.BORDER_WIDTH + View.TEXT_WIDTH, self._y))
+      Display.drawLine(colour, self._TopLeft, self._TitleLeft)
+      Display.drawLine(colour, self._TitleRight, self._TopRight)
+      Display.drawLine(colour, self._TopRight, self._BottomRight)
+      Display.drawLine(colour, self._BottomRight, self._BottomLeft)
+      Display.drawLine(colour, self._BottomLeft, self._TopLeft)
+      Display.draw(titleSurface, (self._x + ListSelector.BORDER_WIDTH + Display.TEXT_WIDTH, self._y))
   
   def drawPos(self):
     """Returns position for interior draw space."""
@@ -240,34 +241,34 @@ class GameMap(Frame):
     
     # Adjust right limit
     # Aware of the -1 on both sides, I'm just using indices :)
-    if tileX + spriteW - 1 > View.DISPLAY_TILES_X - 1:
-      diff = tileX + spriteW - (View.DISPLAY_TILES_X)
+    if tileX + spriteW - 1 > Display.DISPLAY_TILES_X - 1:
+      diff = tileX + spriteW - (Display.DISPLAY_TILES_X)
       spriteW = spriteW - diff
       if spriteW < 1:
         return
     
     # Adjust right limit
     # Aware of the -1 on both sides, I'm just using indices :)
-    if tileY + spriteH - 1 > View.DISPLAY_TILES_Y - 1:
-      diff = tileY + spriteH - (View.DISPLAY_TILES_Y)
+    if tileY + spriteH - 1 > Display.DISPLAY_TILES_Y - 1:
+      diff = tileY + spriteH - (Display.DISPLAY_TILES_Y)
       spriteH = spriteH - diff
       if spriteH < 1:
         return
     
-    View.draw(entity.display.getSpritesheet(),
-                           (tileX*View.TILE_WIDTH + drawX,
-                            tileY*View.TILE_HEIGHT + drawY),
-                           (spriteX*View.TILE_WIDTH,
-                            spriteY*View.TILE_HEIGHT,
-                            spriteW*View.TILE_WIDTH,
-                            spriteH*View.TILE_HEIGHT))
+    Display.draw(entity.display.getSpritesheet(),
+                           (tileX*Display.TILE_WIDTH + drawX,
+                            tileY*Display.TILE_HEIGHT + drawY),
+                           (spriteX*Display.TILE_WIDTH,
+                            spriteY*Display.TILE_HEIGHT,
+                            spriteW*Display.TILE_WIDTH,
+                            spriteH*Display.TILE_HEIGHT))
   
   def repositionCameraOnFocus(self):
     """Looks at where the hero is and repositions the camera so he is near
     the center."""
     pos = self._center.getPos()
-    self.repositionCamera(pos[0] - View.DISPLAY_TILES_X // 2,
-                          pos[1] - View.DISPLAY_TILES_Y // 2)
+    self.repositionCamera(pos[0] - Display.DISPLAY_TILES_X // 2,
+                          pos[1] - Display.DISPLAY_TILES_Y // 2)
   
   def repositionCamera(self, x, y):
     """Repositions the camera with x, y near the center. Will take care that
@@ -278,13 +279,13 @@ class GameMap(Frame):
     
     if self.CAM_POS_X < 0:
       self.CAM_POS_X = 0
-    elif self.CAM_POS_X > self._world.WORLD_WIDTH - View.DISPLAY_TILES_X:
-      self.CAM_POS_X = self._world.WORLD_WIDTH - View.DISPLAY_TILES_X
+    elif self.CAM_POS_X > self._world.WORLD_WIDTH - Display.DISPLAY_TILES_X:
+      self.CAM_POS_X = self._world.WORLD_WIDTH - Display.DISPLAY_TILES_X
     
     if self.CAM_POS_Y < 0:
       self.CAM_POS_Y = 0
-    elif self.CAM_POS_Y > self._world.WORLD_HEIGHT  - View.DISPLAY_TILES_Y:
-      self.CAM_POS_Y = self._world.WORLD_HEIGHT - View.DISPLAY_TILES_Y
+    elif self.CAM_POS_Y > self._world.WORLD_HEIGHT  - Display.DISPLAY_TILES_Y:
+      self.CAM_POS_Y = self._world.WORLD_HEIGHT - Display.DISPLAY_TILES_Y
     
 
     
@@ -295,7 +296,7 @@ class CharDisplay(Frame):
   @staticmethod
   def init():
     """Sets up a single text image."""
-    CharDisplay._nothingSurface = View.renderText("Nothing", colour=(122,122,122))
+    CharDisplay._nothingSurface = Display.renderText("Nothing", colour=(122,122,122))
   
   def __init__(self, x, y, w, h, title, actor, background=True, border=True):
     self._actor = actor
@@ -319,11 +320,11 @@ class CharDisplay(Frame):
     
     for part in self._actor._parts:
       # Render bodypart text
-      surface = View.renderText(part.bp.name, colour=(122,122,122))
+      surface = Display.renderText(part.bp.name, colour=(122,122,122))
       self._partSurfaces.append(surface)
     
     # Set HP draw distance
-    self._hpDrawX = max([s.get_width() for s in self._partSurfaces]) + 3*View.TEXT_WIDTH
+    self._hpDrawX = max([s.get_width() for s in self._partSurfaces]) + 3*Display.TEXT_WIDTH
     
     # Stores surfaces for equipped item names
     self._equippedSurfaces = {}
@@ -340,7 +341,7 @@ class CharDisplay(Frame):
         self._equippedSurfaces[i] = CharDisplay._nothingSurface
         self._equippedNames[i] = "None"
       elif item.bp.name != self._equippedNames[i]:
-        surface = View.renderText(item.bp.name, colour=(122,122,122))
+        surface = Display.renderText(item.bp.name, colour=(122,122,122))
         self._equippedSurfaces[i] = surface
         self._equippedNames[i] = item.bp.name
   
@@ -360,16 +361,16 @@ class CharDisplay(Frame):
     # Iterate all parts
     for i in range(len(self._actor._parts)):
       # Draw part names
-      View.draw(self._partSurfaces[i], (drawX, drawY))
+      Display.draw(self._partSurfaces[i], (drawX, drawY))
       # Draw item
       itemSurface = self._equippedSurfaces[i]
-      View.draw(itemSurface, (drawX + drawW - itemSurface.get_width(), drawY))
+      Display.draw(itemSurface, (drawX + drawW - itemSurface.get_width(), drawY))
       # Draw part HP
       hpStr = str(self._actor._parts[i].hp) + "/" + str(self._actor._parts[i].bp.hp)
-      hpText = View.renderText(hpStr, colour=(122,122,122))
-      View.draw(hpText, (drawX + self._hpDrawX, drawY))
+      hpText = Display.renderText(hpStr, colour=(122,122,122))
+      Display.draw(hpText, (drawX + self._hpDrawX, drawY))
       
-      drawY = drawY + View.TEXT_HEIGHT
+      drawY = drawY + Display.TEXT_HEIGHT
     
     
     
@@ -405,14 +406,14 @@ class EquipmentScreen(Frame):
     (drawX, drawY) = self.drawPos()
     (drawW, drawH) = self.availableSpace()
     
-    self._partX = drawX + View.TEXT_WIDTH
-    self._partY = drawY + View.TEXT_WIDTH
-    self._partW = drawW / 2 - 2*View.TEXT_WIDTH
-    self._partH = drawH - 2*View.TEXT_WIDTH
+    self._partX = drawX + Display.TEXT_WIDTH
+    self._partY = drawY + Display.TEXT_WIDTH
+    self._partW = drawW / 2 - 2*Display.TEXT_WIDTH
+    self._partH = drawH - 2*Display.TEXT_WIDTH
     self._itemX = drawX + drawW - drawW / 2
-    self._itemY = drawY + View.TEXT_WIDTH
-    self._itemW = drawW / 2 - 2*View.TEXT_WIDTH
-    self._itemH = drawH - 2*View.TEXT_WIDTH
+    self._itemY = drawY + Display.TEXT_WIDTH
+    self._itemW = drawW / 2 - 2*Display.TEXT_WIDTH
+    self._itemH = drawH - 2*Display.TEXT_WIDTH
   
   def setFocusOnParts(self, focus):
     """Sets whether the focus is on choosing parts or items."""
@@ -528,13 +529,13 @@ class ListSelector(Frame):
     ListSelector.SelectedIndicators = []
     ListSelector.UnselectedIndicators = []
     for c in "abcdefghijklmnopqrstuvwxyz":
-      indicator = View.renderText("[%c] " % c, colour=(255,255,255))
+      indicator = Display.renderText("[%c] " % c, colour=(255,255,255))
       ListSelector.SelectedIndicators.append(indicator)
-      indicator = View.renderText("(%c) " % c, colour=(122,122,122))
+      indicator = Display.renderText("(%c) " % c, colour=(122,122,122))
       ListSelector.UnselectedIndicators.append(indicator)
     
-    ListSelector.ScrollUpIcon = View.renderText("----", colour=(122,122,122))
-    ListSelector.ScrollDownIcon = View.renderText("++++", colour=(122,122,122))
+    ListSelector.ScrollUpIcon = Display.renderText("----", colour=(122,122,122))
+    ListSelector.ScrollDownIcon = Display.renderText("++++", colour=(122,122,122))
     
     
     
@@ -558,7 +559,7 @@ class ListSelector(Frame):
     # The maximum number of lines accounts for the top and bottom borders
     # which are 1 line height each.
     (w, h) = self.availableSpace()
-    self.maxLines = h // View.TEXT_HEIGHT
+    self.maxLines = h // Display.TEXT_HEIGHT
     
     # If there's not enough space to draw all the lines, it allocates some extra
     # space for the scrolling indicators
@@ -583,14 +584,14 @@ class ListSelector(Frame):
     
     for item in self.items:
       # First, limit text width.
-      text = View.limitText(item, self._availableWidth())
+      text = Display.limitText(item, self._availableWidth())
       
       # Render text for items when they are selected
-      surface = View.renderText(text, colour=(255,255,255))
+      surface = Display.renderText(text, colour=(255,255,255))
       self.selectedSurfaces.append(surface)
       
       # Render text for items when they are unselected
-      surface = View.renderText(text, colour=(122,122,122))
+      surface = Display.renderText(text, colour=(122,122,122))
       self.unselectedSurfaces.append(surface)
   
   def select(self, index):
@@ -646,15 +647,15 @@ class ListSelector(Frame):
     (drawW, _) = self.availableSpace()
     posX = drawX + drawW - ListSelector.ScrollUpIcon.get_width()
     posY = drawY
-    View.draw(ListSelector.ScrollUpIcon, (posX, posY))
+    Display.draw(ListSelector.ScrollUpIcon, (posX, posY))
   
   def drawScrollDown(self):
     """Draws scroll down indicador."""
     (drawX, drawY) = self.drawPos()
     (drawW, drawH) = self.availableSpace()
     posX = drawX + drawW - ListSelector.ScrollUpIcon.get_width()
-    posY = drawY + drawH - View.TEXT_HEIGHT
-    View.draw(ListSelector.ScrollDownIcon, (posX, posY))
+    posY = drawY + drawH - Display.TEXT_HEIGHT
+    Display.draw(ListSelector.ScrollDownIcon, (posX, posY))
   
   def draw(self):
     """Draws the ListSelector at the x, y position."""
@@ -667,7 +668,7 @@ class ListSelector(Frame):
     (drawX, drawY) = self.drawPos()
     # If scrolling is a necessity, allocate space for top scroll indicator
     if self.scrollable():
-      drawY = drawY + View.TEXT_HEIGHT
+      drawY = drawY + Display.TEXT_HEIGHT
       
       # and draw all the indicators (as appropriate)
       if self.canScrollUp():
@@ -679,13 +680,13 @@ class ListSelector(Frame):
     indicator = 0
     for i in self.itemsToDraw:
       if i in self.selected:
-        View.draw(ListSelector.SelectedIndicators[indicator], (drawX, drawY))
-        View.draw(self.selectedSurfaces[i], (drawX + ListSelector.INDICADOR_OFFSET, drawY))
+        Display.draw(ListSelector.SelectedIndicators[indicator], (drawX, drawY))
+        Display.draw(self.selectedSurfaces[i], (drawX + ListSelector.INDICADOR_OFFSET, drawY))
       else: 
-        View.draw(ListSelector.UnselectedIndicators[indicator], (drawX, drawY))
-        View.draw(self.unselectedSurfaces[i], (drawX + ListSelector.INDICADOR_OFFSET, drawY))
+        Display.draw(ListSelector.UnselectedIndicators[indicator], (drawX, drawY))
+        Display.draw(self.unselectedSurfaces[i], (drawX + ListSelector.INDICADOR_OFFSET, drawY))
       
-      drawY = drawY + View.TEXT_HEIGHT
+      drawY = drawY + Display.TEXT_HEIGHT
       indicator = indicator + 1
   
   def getSelectedItems(self):
@@ -814,10 +815,10 @@ class TextBox(Frame):
     # The maximum number of lines accounts for the top and bottom borders
     # which are 1 line height each.
     (w, h) = self.availableSpace()
-    self._maxLines = h // View.TEXT_HEIGHT
+    self._maxLines = h // Display.TEXT_HEIGHT
     
   def addMessage(self, text):
-    surfaces = View.renderWrappedText(self._w, text, colour=(122,122,122))
+    surfaces = Display.renderWrappedText(self._w, text, colour=(122,122,122))
     for surface in surfaces:
       if len(self._textSurfaces) == self._maxLines:
         self._textSurfaces.popleft()
@@ -830,10 +831,10 @@ class TextBox(Frame):
     
     # Get drawing positions
     (drawX, drawY) = self.drawPos()
-    drawY = drawY + self._maxLines*View.TEXT_HEIGHT
+    drawY = drawY + self._maxLines*Display.TEXT_HEIGHT
     for surface in self._textSurfaces:
-      View.draw(surface, (drawX, drawY))
-      drawY = drawY - View.TEXT_HEIGHT
+      Display.draw(surface, (drawX, drawY))
+      drawY = drawY - Display.TEXT_HEIGHT
   
   def processEvent(self, gameEvent):
     """Does not consume input"""
@@ -849,7 +850,7 @@ class Dialog(Frame):
   def __init__(self, x, y, w, h, title, text):
     Frame.__init__(self, x, y, w, h, title)
     self.text = text
-    self.questionSurface = View.renderText(text, colour=(122,122,122))
+    self.questionSurface = Display.renderText(text, colour=(122,122,122))
     
   def draw(self):
     """Draws the textbox..."""
@@ -862,7 +863,7 @@ class Dialog(Frame):
     drawX = x + w // 2 - self.questionSurface.get_width() // 2
     drawY = y + h // 2 - self.questionSurface.get_height() // 2
     
-    View.draw(self.questionSurface, (drawX, drawY))
+    Display.draw(self.questionSurface, (drawX, drawY))
     
   
   def processEvent(self, gameEvent):
@@ -917,7 +918,7 @@ class ScrollTitleSelector(Frame):
     ScrollTitleSelector.INDICADOR_OFFSET = 60
   
     # Renders extra visual cues for whether items are selected.
-    ScrollTitleSelector.indicator = View.renderTitleText("(*) ", colour=(255,255,255))
+    ScrollTitleSelector.indicator = Display.renderTitleText("(*) ", colour=(255,255,255))
     
     
   def __init__(self, x, y, w, h, title, items, values):
@@ -944,11 +945,11 @@ class ScrollTitleSelector(Frame):
     
     for item in self.items:
       # Render text for items when they are selected
-      surface = View.renderTitleText(item, colour=(255,255,255))
+      surface = Display.renderTitleText(item, colour=(255,255,255))
       self.selectedSurfaces.append(surface)
       
       # Render text for items when they are unselected
-      surface = View.renderTitleText(item, colour=(255,255,255))
+      surface = Display.renderTitleText(item, colour=(255,255,255))
       self.unselectedSurfaces.append(surface)
   
   def moveDown(self):
@@ -977,10 +978,10 @@ class ScrollTitleSelector(Frame):
     # Draw items
     for i in range(len(self.items)):
       if i == self.selected:
-        View.draw(ScrollTitleSelector.indicator, (drawX, drawY))
-        View.draw(self.selectedSurfaces[i], (drawX + ScrollTitleSelector.INDICADOR_OFFSET, drawY))
+        Display.draw(ScrollTitleSelector.indicator, (drawX, drawY))
+        Display.draw(self.selectedSurfaces[i], (drawX + ScrollTitleSelector.INDICADOR_OFFSET, drawY))
       else: 
-        View.draw(self.unselectedSurfaces[i], (drawX + ScrollTitleSelector.INDICADOR_OFFSET, drawY))
+        Display.draw(self.unselectedSurfaces[i], (drawX + ScrollTitleSelector.INDICADOR_OFFSET, drawY))
       
       (_, textHeight) = self.unselectedSurfaces[i].get_size()
       

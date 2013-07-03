@@ -1,8 +1,6 @@
 from collections import deque
 
-from Rand import *
-from Activation import *
-from Utility import *
+from nEngine.Activation import Activation
 
 """This module contains all the classes which compose the entities in the game."""
 
