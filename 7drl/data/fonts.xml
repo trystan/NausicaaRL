@@ -1,0 +1,28 @@
+<fontConfig>
+  <fonts>
+    <font name="courier">data/cour.ttf</font>
+    <font name="courier_bold">data/courbd.ttf</font>
+    <font name="courier_italic">data/couri.ttf</font>
+    <font name="courier_bold_italic">data/courbi.ttf</font>
+  </fonts>
+  <options>
+    <option name="default">
+      <font>courier_bold</font>
+      <size>12</size>
+      <style>bold, italic</style>
+      <colour>122,122,122</colour>
+    </option>
+    <option name="default_highlight">
+      <font>courier_bold</font>
+      <size>12</size>
+      <style>bold, italic</style>
+      <colour>255,255,255</colour>
+    </option>
+    <option name="title">
+      <font>courier_bold</font>
+      <size>32</size>
+      <style>bold, italic</style>
+      <colour>122,122,122</colour>
+    </option>
+  </options>
+</fontConfig>
