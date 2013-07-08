@@ -3,8 +3,6 @@ from time import time
 from nEngine.graphics.Display import Display
 from nEngine.Input import Input
 
-
-
 class GameManager:
   """The Game Manager includes functions for managing, unsurprisingly, game
   states."""
