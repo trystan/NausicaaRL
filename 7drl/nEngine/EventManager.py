@@ -13,11 +13,13 @@ class Event:
     self.type = Event.NO_EVENT
     self.timestamp = timestamp
   
-  #TODO: will need to serialise
+  #TODO: will need to serialise, to be sent over the interwebs
   
 class EventManager:
   """Has a global object, but can also be instantiated. Propagates events to
   registered event listeners."""
+  
+  _singleton = 0
   
   def __init__(self):
     """Sets up all the listener information."""
@@ -64,7 +66,13 @@ class EventManager:
       event = self._eventQueue.popleft()
       self.handleEvent(event)
       
+  @staticmethod
+  def getEM():
+    """Gets the global, singleton event manager."""
+    if EventManager._singleton == 0:
+      EventManager._singleton = EventManager()
     
+    return EventManager._singleton
     
     
     

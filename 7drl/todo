@@ -1,0 +1,4 @@
+OPTIMISATIONS:
+- Components may be optionally declared runnable. They won't update otherwise.
+  This could save some calls down. Perhaps all runnables can go in a single list
+  somewhere.
