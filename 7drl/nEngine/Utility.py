@@ -44,7 +44,7 @@ class Utility:
         return [Utility.convert(elem.strip()) for elem in tokens]
     
     return text
-    
+  
   @staticmethod
   def isInt(text):
     """Checks whether the text represents an int."""

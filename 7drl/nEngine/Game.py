@@ -1,6 +1,6 @@
 from time import time
-from nEngine.ProcessManager import ProcessManager
-from nEngine.EventManager import EventManager
+from nEngine.Processes import ProcessManager
+from nEngine.Events import EventManager
 
 class GameManager:
   """The Game Manager includes functions for managing, unsurprisingly, game
