@@ -1,5 +1,4 @@
-import pygame.locals
-from pygame.locals import KEYDOWN 
+from sfml.window import Keyboard, Mouse, KeyEvent, MouseEvent, MouseWheelEvent, MouseButtonEvent, MouseMoveEvent
 
 
 class GameEvent:
@@ -11,6 +10,11 @@ class GameEvent:
   def __init__(self, events):
     self.events = events
     self.consumed = False
+
+class MouseEvent:
+  def __init__(self, position):
+    self.consumed = False
+    self.position = position
 
 class Events:
   """Holds all events/eventnames/etc"""
@@ -29,15 +33,18 @@ class Events:
     
 class Input:
   @staticmethod
-  def init(root):
+  def init(root, view):
     """Given the root of the keyconfig ElementTree, parses it and configures
     all the keys."""
     
     # Initialise event stuff
     Events.init()
     
-    # Initialise input stack
-    Input.stack = []
+    # Store the human view to get and send events
+    Input.view = view
+    
+    # Set initial mouse position
+    Input.oldMousePosition = (0, 0)
     
     # Counter will be used to set "enum" values
     counter = 0
@@ -60,7 +67,7 @@ class Input:
       
       # Go through all keys and associate them to this function
       for keyStr in keyStrs:
-        KEY = getattr(pygame.locals, keyStr) # Get PyGame key constant
+        KEY = getattr(Keyboard, keyStr) # Get PyGame key constant
         if not KEY in Input.KeyToEvent:
           Input.KeyToEvent[KEY] = []
         
@@ -101,40 +108,31 @@ class Input:
     return GameEvent(Input.KeyToEvent[key])
   
   @staticmethod
-  def processInput(gameState):
+  def processInput():
     """Processes PyGame input and pushes events onto the input stack"""
     # pygame.event.wait() <--- THIS WILL WAIT FOR AN EVENT! HUZZAH!
-    for event in pygame.event.get():
-      if event.type == KEYDOWN and Input.isEvent(event.key):
-        gameEvent = Input.generateGameEvent(event.key)
-        Input.processEvent(gameEvent)
+    for event in Input.view.window.events:
+      if event == KeyEvent and Input.isEvent(event.code):
+        gameEvent = Input.generateGameEvent(event.code)
+        Input.view.onKeyboardEvent(gameEvent)
+      elif event == MouseEvent:
+        gameEvent = MouseEvent(Mouse.get_position())
+        Input.view.onMouseEvent(gameEvent)
+      elif event == MouseWheelEvent:
+        gameEvent = MouseEvent(event.position)
+        gameEvent.delta = event.delta
+        Input.view.onMouseWheelEvent(gameEvent)
+      elif event == MouseButtonEvent:
+        gameEvent = MouseEvent(event.position)
+        if(event.pressed and event.released):
+          print("[ERROR] Mouse pressed and released at the same time?!")
+        gameEvent.pressed = event.pressed
+        gameEvent.button = event.button
+        Input.view.onMouseButtonEvent(gameEvent)
+      elif event == MouseMoveEvent:
+        gameEvent = MouseEvent(event.position)
+        gameEvent.oldPosition = Input.oldMousePosition
+        Input.view.onMouseMoveEvent(gameEvent)
+        Input.oldMousePosition = event.position
+
       
-  @staticmethod
-  def processEvent(gameEvent):
-    """Processes a single event through the input stack."""
-    for inputListener in reversed(Input.stack):
-      inputListener.processEvent(gameEvent)
-      if gameEvent.consumed:
-        break
-  
-  @staticmethod
-  def addInputListener(listener):
-    """Registers listener as ready to receive input. Works as a stack, so the 
-    latest listeners will have a chance to consume input earlier."""
-    Input.stack.append(listener)
-  
-  @staticmethod
-  def removeInputListener(listener):
-    """Deregisters a listener. Doesn't need to be the latest one to be
-    registered, in case someone wants to have multiple menus open."""
-    if listener in Input.stack:
-      Input.stack.remove(listener)
-        
-        
-        
-        
-
-
-        
-        
-        

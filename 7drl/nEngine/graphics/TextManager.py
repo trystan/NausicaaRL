@@ -2,7 +2,7 @@ import sfml
 
 import xml.etree.ElementTree as ElementTree
 
-class TextOption:
+class TextStyle:
   """Contains all the options that can be used to customise text rendering."""
   
   def __init__(self, XMLroot):
@@ -66,7 +66,7 @@ class TextManager:
     """Loads options from the XMLroot."""
     
     name = XMLroot.attrib["name"]
-    TextManager.optionMap[name] = TextOption(XMLroot)
+    TextManager.optionMap[name] = TextStyle(XMLroot)
   
   @staticmethod
   def loadFromFile(file):

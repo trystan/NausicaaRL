@@ -1,0 +1,366 @@
+<keyconfig>
+  <event>
+    <description>Wait.</description>
+    <name>MOVE_WAIT</name>
+    <keys>PERIOD,NUMPAD5</keys>
+    <type>MOVEMENT</type>
+  </event>
+  <event>
+    <description>Move up.</description>
+    <name>MOVE_UP</name>
+    <keys>UP,NUMPAD8</keys>
+    <type>MOVEMENT</type>
+  </event>
+  <event>
+    <description>Move down.</description>
+    <name>MOVE_DOWN</name>
+    <keys>DOWN,NUMPAD2</keys>
+    <type>MOVEMENT</type>
+  </event>
+  <event>
+    <description>Move left.</description>
+    <name>MOVE_LEFT</name>
+    <keys>LEFT,NUMPAD4</keys>
+    <type>MOVEMENT</type>
+  </event>
+  <event>
+    <description>Move right.</description>
+    <name>MOVE_RIGHT</name>
+    <keys>RIGHT,NUMPAD6</keys>
+    <type>MOVEMENT</type>
+  </event>
+  <event>
+    <description>Move up and left.</description>
+    <name>MOVE_UP_LEFT</name>
+    <keys>HOME,NUMPAD7</keys>
+    <type>MOVEMENT</type>
+  </event>
+  <event>
+    <description>Move up and right.</description>
+    <name>MOVE_UP_RIGHT</name>
+    <keys>PAGE_UP,NUMPAD9</keys>
+    <type>MOVEMENT</type>
+  </event>
+  <event>
+    <description>Move down and left.</description>
+    <name>MOVE_DOWN_LEFT</name>
+    <keys>END,NUMPAD1</keys>
+    <type>MOVEMENT</type>
+  </event>
+  <event>
+    <description>Move down and right.</description>
+    <name>MOVE_DOWN_RIGHT</name>
+    <keys>PAGE_DOWN,NUMPAD3</keys>
+    <type>MOVEMENT</type>
+  </event>
+  <event>
+    <description>Move above / climb.</description>
+    <name>MOVE_CLIMB</name>
+    <keys>SUBTRACT</keys>
+    <type>MOVEMENT</type>
+  </event>
+  <event>
+    <description>Move below / descend.</description>
+    <name>MOVE_DESCEND</name>
+    <keys>ADD</keys>
+    <type>MOVEMENT</type>
+  </event>
+  
+  <event>
+    <description>Get / pickup.</description>
+    <name>PICKUP</name>
+    <keys>G,COMMA</keys>
+  </event>
+  <event>
+    <description>Drop stuff.</description>
+    <name>DROP</name>
+    <keys>D</keys>
+  </event>
+  
+  <event>
+    <description>Equipment screen.</description>
+    <name>EQUIPMENT</name>
+    <keys>E</keys>
+  </event>
+  
+  <event>
+    <description>Scroll up.</description>
+    <name>SCROLL_UP</name>
+    <keys>SUBTRACT</keys>
+    <type>RELATIVE_SELECTION</type>
+  </event>
+  <event>
+    <description>Scroll down.</description>
+    <name>SCROLL_DOWN</name>
+    <keys>ADD</keys>
+    <type>RELATIVE_SELECTION</type>
+  </event>
+  
+  <event>
+    <description>Move selection up.</description>
+    <name>SELECT_UP</name>
+    <keys>UP,NUMPAD8</keys>
+    <type>RELATIVE_SELECTION</type>
+  </event>
+  <event>
+    <description>Move selection down.</description>
+    <name>SELECT_DOWN</name>
+    <keys>DOWN,NUMPAD2</keys>
+    <type>RELATIVE_SELECTION</type>
+  </event>
+  <event>
+    <description>Move selection left.</description>
+    <name>SELECT_LEFT</name>
+    <keys>LEFT,NUMPAD4</keys>
+    <type>RELATIVE_SELECTION</type>
+  </event>
+  <event>
+    <description>Move selection right.</description>
+    <name>SELECT_RIGHT</name>
+    <keys>RIGHT,NUMPAD6</keys>
+    <type>RELATIVE_SELECTION</type>
+  </event>
+  <event>
+    <description>Move selection up and left.</description>
+    <name>SELECT_UP_LEFT</name>
+    <keys>HOME,NUMPAD7</keys>
+    <type>RELATIVE_SELECTION</type>
+  </event>
+  <event>
+    <description>Move selection up and right.</description>
+    <name>SELECT_UP_RIGHT</name>
+    <keys>PAGE_UP,NUMPAD9</keys>
+    <type>RELATIVE_SELECTION</type>
+  </event>
+  <event>
+    <description>Move selection down and left.</description>
+    <name>SELECT_DOWN_LEFT</name>
+    <keys>END,NUMPAD1</keys>
+    <type>RELATIVE_SELECTION</type>
+  </event>
+  <event>
+    <description>Move selection down and right.</description>
+    <name>SELECT_DOWN_RIGHT</name>
+    <keys>PAGE_DOWN,NUMPAD3</keys>
+    <type>RELATIVE_SELECTION</type>
+  </event>
+  
+  <event>
+    <description>Wear equipment / wield weapons.</description>
+    <name>WEAR</name>
+    <keys>W</keys>
+  </event>
+  <event>
+    <description>Remove equipment / weapons.</description>
+    <name>REMOVE</name>
+    <keys>R</keys>
+  </event>
+  <event>
+    <description>Eat / drink something.</description>
+    <name>EAT</name>
+    <keys>E</keys>
+  </event>
+  <event>
+    <description>Use something.</description>
+    <name>USE</name>
+    <keys>U</keys>
+  </event>
+  
+  <event>
+    <description>Selection (a)</description>
+    <name>SELECT_A</name>
+    <keys>A</keys>
+    <type>SELECTION</type>
+  </event>
+  <event>
+    <description>Selection (b)</description>
+    <name>SELECT_B</name>
+    <keys>B</keys>
+    <type>SELECTION</type>
+  </event>
+  <event>
+    <description>Selection (c)</description>
+    <name>SELECT_C</name>
+    <keys>C</keys>
+    <type>SELECTION</type>
+  </event>
+  <event>
+    <description>Selection (d)</description>
+    <name>SELECT_D</name>
+    <keys>D</keys>
+    <type>SELECTION</type>
+  </event>
+  <event>
+    <description>Selection (e)</description>
+    <name>SELECT_E</name>
+    <keys>E</keys>
+    <type>SELECTION</type>
+  </event>
+  <event>
+    <description>Selection (f)</description>
+    <name>SELECT_F</name>
+    <keys>F</keys>
+    <type>SELECTION</type>
+  </event>
+  <event>
+    <description>Selection (g)</description>
+    <name>SELECT_G</name>
+    <keys>G</keys>
+    <type>SELECTION</type>
+  </event>
+  <event>
+    <description>Selection (h)</description>
+    <name>SELECT_H</name>
+    <keys>H</keys>
+    <type>SELECTION</type>
+  </event>
+  <event>
+    <description>Selection (i)</description>
+    <name>SELECT_I</name>
+    <keys>I</keys>
+    <type>SELECTION</type>
+  </event>
+  <event>
+    <description>Selection (j)</description>
+    <name>SELECT_J</name>
+    <keys>J</keys>
+    <type>SELECTION</type>
+  </event>
+  <event>
+    <description>Selection (k)</description>
+    <name>SELECT_K</name>
+    <keys>K</keys>
+    <type>SELECTION</type>
+  </event>
+  <event>
+    <description>Selection (l)</description>
+    <name>SELECT_L</name>
+    <keys>L</keys>
+    <type>SELECTION</type>
+  </event>
+  <event>
+    <description>Selection (m)</description>
+    <name>SELECT_M</name>
+    <keys>M</keys>
+    <type>SELECTION</type>
+  </event>
+  <event>
+    <description>Selection (n)</description>
+    <name>SELECT_N</name>
+    <keys>N</keys>
+    <type>SELECTION</type>
+  </event>
+  <event>
+    <description>Selection (o)</description>
+    <name>SELECT_O</name>
+    <keys>O</keys>
+    <type>SELECTION</type>
+  </event>
+  <event>
+    <description>Selection (p)</description>
+    <name>SELECT_P</name>
+    <keys>P</keys>
+    <type>SELECTION</type>
+  </event>
+  <event>
+    <description>Selection (q)</description>
+    <name>SELECT_Q</name>
+    <keys>Q</keys>
+    <type>SELECTION</type>
+  </event>
+  <event>
+    <description>Selection (r)</description>
+    <name>SELECT_R</name>
+    <keys>R</keys>
+    <type>SELECTION</type>
+  </event>
+  <event>
+    <description>Selection (s)</description>
+    <name>SELECT_S</name>
+    <keys>S</keys>
+    <type>SELECTION</type>
+  </event>
+  <event>
+    <description>Selection (t)</description>
+    <name>SELECT_T</name>
+    <keys>T</keys>
+    <type>SELECTION</type>
+  </event>
+  <event>
+    <description>Selection (u)</description>
+    <name>SELECT_U</name>
+    <keys>U</keys>
+    <type>SELECTION</type>
+  </event>
+  <event>
+    <description>Selection (v)</description>
+    <name>SELECT_V</name>
+    <keys>V</keys>
+    <type>SELECTION</type>
+  </event>
+  <event>
+    <description>Selection (w)</description>
+    <name>SELECT_W</name>
+    <keys>W</keys>
+    <type>SELECTION</type>
+  </event>
+  <event>
+    <description>Selection (x)</description>
+    <name>SELECT_X</name>
+    <keys>X</keys>
+    <type>SELECTION</type>
+  </event>
+  <event>
+    <description>Selection (y)</description>
+    <name>SELECT_Y</name>
+    <keys>Y</keys>
+    <type>SELECTION</type>
+  </event>
+  <event>
+    <description>Selection (z)</description>
+    <name>SELECT_Z</name>
+    <keys>Z</keys>
+    <type>SELECTION</type>
+  </event>
+
+  <event>
+    <description>Exit / escape.</description>
+    <name>EXIT</name>
+    <keys>ESCAPE</keys>
+  </event>
+  
+  <event>
+    <description>Enter / Accept</description>
+    <name>ACCEPT</name>
+    <keys>RETURN</keys>
+  </event>
+  
+  <event>
+    <description>Switch.</description>
+    <name>SWITCH</name>
+    <keys>TAB</keys>
+  </event>
+  
+  <event>
+    <description>Open a container or a door.</description>
+    <name>OPEN</name>
+    <keys>O</keys>
+  </event>
+  
+  <event>
+    <description>Close a container or a door.</description>
+    <name>CLOSE</name>
+    <keys>C</keys>
+  </event>
+</keyconfig>
+
+
+
+
+
+
+
+
+
+
+

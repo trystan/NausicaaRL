@@ -1,5 +1,6 @@
 """Entity System implementation. Loosely inspired by Artemis."""
 from nEngine.Utility import Utility
+from nEngine.Events import EventManager
 
 class Entity:
   
@@ -8,6 +9,10 @@ class Entity:
   def __init__(self, world):
     self.id = Entity.IDCounter
     Entity.IDCounter = Entity.IDCounter + 1
+    
+    # Public
+    self.parent = None
+    self.children = []
     
     self._components = {}
     self._world = world
@@ -49,12 +54,13 @@ class Component:
     self.id = None
     self._entity = entity
   
-  def init(self, XMLRoot):
+  def init(self, XMLRoot=None):
     """Initialisation is called before populating with XML data. The basic
     implementation simply dynamically assigns variable names and their values,
     converted to the most sane type found. Reimplement as necessary."""
-    for prop in XMLRoot:
-      setattr(self, prop.tag, Utility.convert(prop.text))
+    if XMLRoot != None:
+      for prop in XMLRoot:
+        setattr(self, prop.tag, Utility.convert(prop.text))
   
   def postInit(self):
     """Called after all of the actor components have been populated."""
@@ -79,39 +85,13 @@ class System:
     print("[ERROR] System.applicable(entity) not implemented.")
     return False
   
-  def run(self, dt):
+  def tick(self, dt):
     """Runs the system, with dt time having passed. Implement it!"""
     print("[ERROR] System.run(dt) not implemented.")
 
-
-
+  
 class World:
-  """The World class manages all entities and systems that work on entities."""
-  
   def __init__(self):
+    self._em = EventManager()
     self._entities = []
-    self._systems = {} # Maps system type to system itself.
-  
-  def addEntity(self, entity):
-    self._entities.append(entity)
-    for _, system in self._systems.items():
-      if system.check(entity):
-        system.addEntity(entity)
-  
-  def removeEntity(self, entity):
-    self._entities.remove(entity)
-    for _, system in self._systems.items():
-      if system.check(entity):
-        system.removeEntity(entity)
-  
-  def addSystem(self, system):
-    self._systems[type(system)] = system
-  
-  def removeSystem(self, system):
-    del self._systems[type(system)]
-  
-  
-  
-  
-  
-  
+    self._systems = {} # Maps system type to system itself.  

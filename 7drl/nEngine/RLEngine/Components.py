@@ -1,5 +1,4 @@
 from nEngine.Entities import Component
-from nEngine.graphics.Display import Display
 
 # The variables indicated in the  components' __init__() functions indicate
 # what variables are "expected" in the XML
@@ -68,17 +67,4 @@ class EquipmentComponent(Component):
   def postInit(self):
     if self.entity.getComponent(BodyComponent) == None:
       print("[ERROR] EquipmentComponent could not find BodyComponent!")
-  
-
-
-class SimpleRenderableComponent(Component):
-  def __init__(self, entity):
-    Component.__init__(self, entity)
-
-  def init(self, XMLRoot):
-    self.texture = Display.getTexture(XMLRoot.find("source"))
-    # TODO: more stuff needed here.
-  
-  def postInit(self):
-    pass
   

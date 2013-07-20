@@ -32,8 +32,7 @@ class GameState:
   
   def __init__(self):
     self._nextState = None
-    self._pm = ProcessManager()
-    self._em = EventManager()
+  
   
   def initialise(self):
     """Sets GameState in a ready-to-run situation. Reimplement. This is probably
@@ -57,6 +56,29 @@ class GameState:
       currentTime = time()
       self._pm.run(currentTime - oldTime)
       oldTime = time()
+      
+  
+  def addEntity(self, entity):
+    self._entities.append(entity)
+    for _, system in self._systems.items():
+      if system.check(entity):
+        system.addEntity(entity)
+  
+  def removeEntity(self, entity):
+    self._entities.remove(entity)
+    for _, system in self._systems.items():
+      if system.check(entity):
+        system.removeEntity(entity)
+  
+  def addSystem(self, system):
+    self._systems[type(system)] = system
+  
+  def removeSystem(self, system):
+    del self._systems[type(system)]
+  
+  def tick(self, dt):
+    for system in self._systems:
+      system.tick(dt)
       
     
     

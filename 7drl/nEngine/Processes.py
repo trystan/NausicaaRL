@@ -1,4 +1,9 @@
+"""This module is possibly out-dated. It is superceded by the Entity Systems
+design, which uses Systems instead. Therefore, instead of having one process to
+animate whatever people, the AnimationSystem will animate all of the things
+automatically, as applicable."""
 
+#TODO: remove?
 
 
 class ProcessManager:
