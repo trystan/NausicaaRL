@@ -1,0 +1,4 @@
+
+
+class Options:
+  DEBUG = True

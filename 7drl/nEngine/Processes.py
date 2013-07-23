@@ -4,6 +4,9 @@ animate whatever people, the AnimationSystem will animate all of the things
 automatically, as applicable."""
 
 #TODO: remove?
+# NOT OUTDATED:
+# Systems are used for in-game stuff. Processes are used for all the things!
+# Like... I dunno, GUIs and stuff. Maybe even ensuring systems run!
 
 
 class ProcessManager:

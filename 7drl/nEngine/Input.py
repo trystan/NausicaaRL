@@ -111,7 +111,7 @@ class Input:
   def processInput():
     """Processes PyGame input and pushes events onto the input stack"""
     # pygame.event.wait() <--- THIS WILL WAIT FOR AN EVENT! HUZZAH!
-    for event in Input.view.window.events:
+    for event in Input.view._window.events:
       if event == KeyEvent and Input.isEvent(event.code):
         gameEvent = Input.generateGameEvent(event.code)
         Input.view.onKeyboardEvent(gameEvent)

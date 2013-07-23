@@ -1,6 +1,8 @@
 import sfml
 
 from nEngine.Utility import Utility
+from nEngine.Options import Options
+from nEngine.graphics.nGUI import NGUIPane
 
 """This is the View in the MVC paradigm. It is a singleton that handles all
 drawing and all sorts of things."""
@@ -18,10 +20,11 @@ class HumanView():
       setattr(self, configNode.tag, Utility.convert(configNode.text))
       
     # Creates screen
-    self.window = sfml.RenderWindow(sfml.VideoMode(self.WINDOW_WIDTH, self.WINDOW_HEIGHT), title)
+    self._window = sfml.RenderWindow(sfml.VideoMode(self.WINDOW_WIDTH, self.WINDOW_HEIGHT), title)
+    self._pane = NGUIPane(0, 0, self.WINDOW_WIDTH, self.WINDOW_HEIGHT)
+    self._pane.name = "HumanView"
 
     
-  
   def getTexture(self, sourcefile):
     """Gets the spritesheet in ready-to-use format!"""
     if not sourcefile in self._textures:
@@ -45,39 +48,41 @@ class HumanView():
     
     return sprite
   
+  
+  def draw(self):
+    self.clear()
+    self._pane.draw(self)
+    self._window.display()
 
-  def draw(self, sprite):
+  def drawSprite(self, sprite):
     """Draws a surface on the screen. Should probably not be used directly."""
-    self.window.draw(sprite)
+    self._window.draw(sprite)
   
   def drawLine(self, colour, startPos, endPos, width=1):
+    #TODO: Line width not implemented yet
     lines = sfml.VertexArray(sfml.PrimitiveType.LINES_STRIP, 2)
     lines[0].position = startPos
     lines[1].position = endPos
-    self.window.draw(lines)
+    self._window.draw(lines)
     
   def clear(self, colour = sfml.Color.BLACK):
-    self.window.clear(colour)
+    self._window.clear(colour)
   
   # Input
   
   def onKeyboardEvent(self, event):
-    print("OnMouseEvent")
-    print(str(event.code) + ", " + str(event.pressed) + ", " + str(event.released))
+    pass
   
-  def onMouseEvent(self, event): 
-    print("OnMouseEvent")
-    print(str(event.entered) + ", " + str(event.left))
+  def onMouseEvent(self, event):
+    print("[WARNING] HumanView.onMouseEvent called. This has never happened before!")
   
   def onMouseWheelEvent(self, event):
-    print("OnMouseWheelEvent")
-    print(str(event.delta) + ", " + str(event.position))
+    self._pane._onMouseWheelEvent(event)
   
   def onMouseButtonEvent(self, event):
-    print("OnMouseButtonEvent")
-    print(str(event.pressed) + ", " + str(event.released) + ", " + str(event.button) + ", " + str(event.position))
+    self._pane._onMouseButtonEvent(event)
   
   def onMouseMoveEvent(self, event):
-    print("OnMouseMoveEvent")
-    print(str(event.position) + ", " + str(event.oldPosition))
+    self._pane._onMouseMoveEvent(event)
+  
   
