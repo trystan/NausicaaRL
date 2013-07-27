@@ -1,0 +1,38 @@
+<animations>
+  <animation name="XCC_move" texture="planet5521/data/sprites.png">
+    <frame>5,4,9,16,0.25</frame>
+    <frame>16,4,9,16,0.25</frame>
+    <frame>27,4,9,16,0.25</frame>
+    <frame>38,4,9,16,0.25</frame>
+  </animation>
+  <animation name="XCC_stand" texture="planet5521/data/sprites.png">
+    <frame>5,4,9,16,3</frame>
+    <frame>44,4,9,16,1</frame>
+  </animation>
+  
+  <animation name="YTR_move" texture="planet5521/data/sprites.png">
+    <frame>5,23,10,17,0.25</frame>
+    <frame>18,23,10,17,0.25</frame>
+    <frame>30,23,10,17,0.25</frame>
+    <frame>42,23,10,17,0.25</frame>
+    <frame>18,23,10,17,0.25</frame>
+  </animation>
+  
+  <animation name="YTR_stand" texture="planet5521/data/sprites.png">
+    <frame>5,23,10,17,0.25</frame>
+  </animation>
+  
+  <animation name="Taylor M77" texture="planet5521/data/sprites.png">
+    <frame>53,12,9,5,1</frame>
+  </animation>
+  <animation name="ProtoBlaster MK I" texture="planet5521/data/sprites.png">
+    <frame>55,30,11,4,1</frame>
+  </animation>
+  
+  <animation name="TaylorM77Bullet" texture="planet5521/data/sprites.png">
+    <frame>67,12,2,2,1</frame>
+  </animation>
+  <animation name="Proton BlastBullet" texture="planet5521/data/sprites.png">
+    <frame>71,30,7,3,1</frame>
+  </animation>
+</animations>

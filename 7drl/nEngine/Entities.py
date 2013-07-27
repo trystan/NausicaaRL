@@ -1,6 +1,29 @@
 """Entity System implementation. Loosely inspired by Artemis."""
+import xml.etree.ElementTree as ElementTree
+
 from nEngine.Utility import Utility
 from nEngine.Events import EventManager
+
+
+class EntityFactory:
+  _singleton = None
+  
+  def __init__(self):
+    self._map = {}
+    
+  @staticmethod
+  def getSingleton():
+    if not EntityFactory._singleton:
+      EntityFactory._singleton = EntityFactory()
+    return EntityFactory._singleton
+  
+  def readFile(self, file):
+    root = ElementTree.parse(file).getroot()
+    self.readFromXML(self, XMLRoot)
+  
+  def readFromXML(self, XMLRoot):
+    for entityRoot in XMLRoot:
+      
 
 class Entity:
   
@@ -95,3 +118,25 @@ class World:
     self._em = EventManager()
     self._entities = []
     self._systems = {} # Maps system type to system itself.  
+  
+  def addEntity(self, entity):
+    self._entities.append(entity)
+    for _, system in self._systems.items():
+      if system.check(entity):
+        system.addEntity(entity)
+  
+  def removeEntity(self, entity):
+    self._entities.remove(entity)
+    for _, system in self._systems.items():
+      if system.check(entity):
+        system.removeEntity(entity)
+  
+  def addSystem(self, system):
+    self._systems[type(system)] = system
+  
+  def removeSystem(self, system):
+    del self._systems[type(system)]
+  
+  def tick(self, dt):
+    for system in self._systems:
+      system.tick(dt)

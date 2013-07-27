@@ -1,8 +1,8 @@
 import sfml
 
 from nEngine.Utility import Utility
-from nEngine.Options import Options
 from nEngine.graphics.nGUI import NGUIPane
+from nEngine.graphics.TextManager import TextManager
 
 """This is the View in the MVC paradigm. It is a singleton that handles all
 drawing and all sorts of things."""
@@ -18,11 +18,15 @@ class HumanView():
     properties therein and sets them as properties of the View class."""
     for configNode in graphicsRoot:
       setattr(self, configNode.tag, Utility.convert(configNode.text))
-      
+    
+    TextManager.init()
+    TextManager.loadFromFile("NausicaaRL/data/fonts.xml")
+    
     # Creates screen
     self._window = sfml.RenderWindow(sfml.VideoMode(self.WINDOW_WIDTH, self.WINDOW_HEIGHT), title)
     self._pane = NGUIPane(0, 0, self.WINDOW_WIDTH, self.WINDOW_HEIGHT)
     self._pane.name = "HumanView"
+    self.mouseFocus = None
 
     
   def getTexture(self, sourcefile):
@@ -62,7 +66,9 @@ class HumanView():
     #TODO: Line width not implemented yet
     lines = sfml.VertexArray(sfml.PrimitiveType.LINES_STRIP, 2)
     lines[0].position = startPos
+    lines[0].color = colour
     lines[1].position = endPos
+    lines[1].color = colour
     self._window.draw(lines)
     
   def clear(self, colour = sfml.Color.BLACK):
@@ -84,5 +90,12 @@ class HumanView():
   
   def onMouseMoveEvent(self, event):
     self._pane._onMouseMoveEvent(event)
+    newFocus = self._pane._getMouseFocus(event.position)
+    if newFocus != self.mouseFocus:
+      if self.mouseFocus != None:
+        self.mouseFocus._onMouseDefocusEvent(event)
+      self.mouseFocus = newFocus
+      self.mouseFocus._onMouseFocusEvent(event)
+    
   
   

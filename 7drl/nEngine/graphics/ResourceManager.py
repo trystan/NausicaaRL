@@ -1,10 +1,12 @@
 import sfml
+from nEngine.graphics.Animation import Frame
 
 
 class ResourceManager:
 
   # Stores all images using an identifier
   _textures = {}
+  _animations = {}
   
   @staticmethod
   def preload(sourcefile):
@@ -21,3 +23,13 @@ class ResourceManager:
     
     return ResourceManager._textures[sourcefile]
   
+  @staticmethod
+  def loadAnimations(self, XMLRoot):
+    for animationRoot in XMLRoot:
+      ResourceManager.loadAnimation(animationRoot)
+  
+  @staticmethod
+  def loadAnimation(XMLRoot):
+    name = XMLRoot.find("name").text
+    for frameRoot in XMLRoot:
+      

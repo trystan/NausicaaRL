@@ -1,0 +1,78 @@
+<data>
+  <bullets>
+    <bullet>
+      <name>TaylorM77Bullet</name>
+      <entity>
+        <PositionComponent>0,0</PositionComponent>
+        <VelocityComponent>50</VelocityComponent>
+        <DamageComponent>5</DamageComponent>
+        <BulletCollisionComponent></BulletCollisionComponent>
+        <RangeComponent>200</RangeComponent>
+      </entity>
+      
+     <bullet>
+      <name>Proton Blast</name>
+      <entity>
+        <PositionComponent>0,0</PositionComponent>
+        <VelocityComponent>50</VelocityComponent>
+        <DamageComponent>5</DamageComponent>
+        <BulletCollisionComponent></BulletCollisionComponent>
+        <RangeComponent>200</RangeComponent>
+      </entity>
+    </bullet>
+    </bullet>
+  </bullets>
+  
+  <weapons>
+    <weapon>
+      <name>ProtoBlaster</name>
+      <entity>
+        <ShootingComponent>
+          <reload>2</reload>
+          <spread>3</spread>
+          <bullet>Proton Blast</bullet>
+          <RangeComponent>200</RangeComponent>
+        </ShootingComponent>
+      </entity>
+    </weapon>
+    
+    <weapon>
+      <name>Taylor M77</name>
+      <entity>
+        <ShootingComponent>
+          <reload>0.25</reload>
+          <spread>10</spread>
+          <bullet>TaylorM77Bullet</bullet>
+          <RangeComponent>150</RangeComponent>
+        </ShootingComponent>
+      </entity>
+    </weapon>
+  </weapons>
+  
+  
+  
+  <units>
+    <unit>
+      <name>XCC Grunt</name>
+      <animationPrefix>XCC_</animationPrefix>
+      <entity>
+        <PositionComponent>0,0</positionComponent>
+        <DirectionComponent>right</DirectionComponent>
+        <VelocityComponent>5</velocityComponent>
+        <HPComponent>10</hpComponent>
+        <WeaponComponent>Taylor M77</WeaponComponent>
+      </entity>
+    </unit>
+    
+    <unit>
+      <name>YTR Grunt</name>
+      <animationPrefix>YTR_</animationPrefix>
+      <entity>
+        <positionComponent>0,0</positionComponent>
+        <velocityComponent>5</velocityComponent>
+        <hpComponent>10</hpComponent>
+        <WeaponComponent>ProtoBlaster</WeaponComponent>
+      </entity>
+    </unit>
+  </units>
+</data>

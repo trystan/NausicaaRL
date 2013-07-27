@@ -26,12 +26,13 @@ class GameManager:
       GameManager._currentState.terminate()
       GameManager._currentState = GameManager._currentState.nextState()
 
-class GameState:
+class GameState(EventManager):
   """This class contains a generic game state. States switch between each other
   on occasion."""
   
   def __init__(self):
     self._nextState = None
+    self._pm = ProcessManager()
   
   
   def initialise(self):
@@ -57,28 +58,6 @@ class GameState:
       self._pm.run(currentTime - oldTime)
       oldTime = time()
       
-  
-  def addEntity(self, entity):
-    self._entities.append(entity)
-    for _, system in self._systems.items():
-      if system.check(entity):
-        system.addEntity(entity)
-  
-  def removeEntity(self, entity):
-    self._entities.remove(entity)
-    for _, system in self._systems.items():
-      if system.check(entity):
-        system.removeEntity(entity)
-  
-  def addSystem(self, system):
-    self._systems[type(system)] = system
-  
-  def removeSystem(self, system):
-    del self._systems[type(system)]
-  
-  def tick(self, dt):
-    for system in self._systems:
-      system.tick(dt)
       
     
     
