@@ -1,7 +1,7 @@
 
 import xml.etree.ElementTree as ElementTree
 
-from nEngine.GameManager import GameManager
+from nEngine.Game import GameManager
 from nEngine.graphics.Display import Display
 from nEngine.Input import Input
 from nEngine.graphics.nGUI.nGUI import InitGUI
