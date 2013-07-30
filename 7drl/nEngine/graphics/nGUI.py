@@ -21,6 +21,10 @@ class NGUIBase:
     self._ax = x
     self._ay = y
 
+    # Sprites
+    self._sprites = []
+    
+    # Input
     self._mouseFocus = False  # Is the mouse right on top of this
     self._mouseWithin = False # Is the mouse within the area
     
@@ -31,7 +35,7 @@ class NGUIBase:
   def setParent(self, parent):
     """Set parent and update absolute position."""
     self._parent = parent
-    if parent != None:
+    if parent != None: # TODO This should go to a recalculate function that can be called from more places.
       self._ax = parent._ax + self._x
       self._ay = parent._ay + self._y
   
@@ -175,6 +179,9 @@ class NGUIBase:
 
   def __str__(self):
     return self.name
+
+
+
 
 class NGUIPane(NGUIBase):
   """Basic content pane"""
@@ -352,8 +359,14 @@ class NGUIListSelector(NGUIFrame):
     NGUIPane.__init__(self, x, y, w, h, backgroundColour)
 
 
-
-
+class NGUIImage(NGUIBase):
+  def __init__(self, x, y, sprite):
+    (w, h) = sprite.local_bounds.size
+    self._sprite = sprite
+    NGUIPane.__init__(self, x, y, w, h)
+  
+  def draw(self, view):
+    self._sprite.position = (self._ax, self._ay)
 
 
 

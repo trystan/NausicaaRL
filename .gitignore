@@ -16,6 +16,7 @@ local.properties
 .settings/
 .loadpath
 *__pycache__*
+*.psd
 
 # External tool builders
 .externalToolBuilders/

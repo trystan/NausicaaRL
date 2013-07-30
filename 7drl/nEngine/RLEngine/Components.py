@@ -3,16 +3,6 @@ from nEngine.Entities import Component
 # The variables indicated in the  components' __init__() functions indicate
 # what variables are "expected" in the XML
 
-class PositionComponent(Component):
-  def __init__(self, entity):
-    Component.__init__(self, entity)
-    self.posX = None
-    self.posY = None
-  
-  def postInit(self):
-    pass
-
-
 
 class TileComponent(Component):
   def __init__(self, entity):

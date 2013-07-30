@@ -1,5 +1,7 @@
 import sfml
 
+import xml.etree.ElementTree as ElementTree
+
 from nEngine.Utility import Utility
 from nEngine.graphics.nGUI import NGUIPane
 from nEngine.graphics.TextManager import TextManager
@@ -13,14 +15,14 @@ class HumanView():
   _textures = {}
 
 
-  def init(self, title, graphicsRoot):
+  def init(self, title, graphicsFile):
     """Given the graphics element of the configuration file, parses the
     properties therein and sets them as properties of the View class."""
-    for configNode in graphicsRoot:
+    XMLroot = ElementTree.parse(graphicsFile).getroot()
+    for configNode in XMLroot:
       setattr(self, configNode.tag, Utility.convert(configNode.text))
     
     TextManager.init()
-    TextManager.loadFromFile("NausicaaRL/data/fonts.xml")
     
     # Creates screen
     self._window = sfml.RenderWindow(sfml.VideoMode(self.WINDOW_WIDTH, self.WINDOW_HEIGHT), title)

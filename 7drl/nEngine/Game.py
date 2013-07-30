@@ -6,27 +6,28 @@ class GameManager:
   """The Game Manager includes functions for managing, unsurprisingly, game
   states. It is a singleton! We ain't managing mo' n' one game, yo!"""
  
-  GameManager._currentState = None
+  def __init__(self):
+    self._currentState = None
   
-  @staticmethod
-  def setStartState(state):
+  def setStartState(self, state):
     """Set the initial state."""
     GameManager._currentState = state
   
-  @staticmethod
-  def getState():
+  def getState(self):
     return GameManager._currentState
   
-  @staticmethod
-  def run():
+  def run(self):
     """Runs, well, the game :)"""
-    while GameManager._currentState != None:
-      GameManager._currentState.initialise()
-      GameManager._currentState.run()
-      GameManager._currentState.terminate()
-      GameManager._currentState = GameManager._currentState.nextState()
+    while self._currentState != None:
+      self._currentState.initialise()
+      self._currentState.run()
+      self._currentState.terminate()
+      self._currentState = self._currentState.nextState()
 
-class GameState(EventManager):
+
+
+
+class GameState:
   """This class contains a generic game state. States switch between each other
   on occasion."""
   

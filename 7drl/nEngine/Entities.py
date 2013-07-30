@@ -1,4 +1,5 @@
 """Entity System implementation. Loosely inspired by Artemis."""
+import importlib
 import xml.etree.ElementTree as ElementTree
 
 from nEngine.Utility import Utility
@@ -19,10 +20,26 @@ class EntityFactory:
   
   def readFile(self, file):
     root = ElementTree.parse(file).getroot()
-    self.readFromXML(self, XMLRoot)
+    componentBuilderFile = root.attrib["componentBuilder"]
+    module = importlib.import_module(componentBuilderFile)
+    self._componentBuilder = module.componentBuilder
+    
+    self.readFromXML(root)
   
   def readFromXML(self, XMLRoot):
     for entityRoot in XMLRoot:
+      entityName = entityRoot.attrib["name"]
+      self._map[entityName] = entityRoot
+      
+  def produce(self, world, entityName):
+    entity = Entity(world)
+    entityRoot = self._map[entityName]
+    for componentRoot in entityRoot:
+      component = self._componentBuilder[componentRoot.tag](entity)
+      entity.addComponent(component)
+    for component in entity._components.values():
+      component.postInit()
+      
       
 
 class Entity:
@@ -39,17 +56,11 @@ class Entity:
     
     self._components = {}
     self._world = world
-  
-  def init(self, XMLRoot):
-    """Do stuff with data that is not components..."""
-    self.name = XMLRoot.find("name").text
+    self._world.addEntity(self)
   
   def addComponent(self, component):
     """Adds component to component map..."""
-    if not component.id in self._components:
-      self._components[component.id] = []
-    
-    self._components[component.id].append(component)
+    self._components[type(component)] = component
   
   
   def run(self, dt):
@@ -57,12 +68,9 @@ class Entity:
     for component in self._components:
       component.run(dt)
   
-  def getComponent(self, componentType):
-    """Gets a component based on type."""
-    for component in self._components:
-      if type(component) == componentType:
-        return component
-    return None
+  def getComponent(self, componentClass):
+    """Gets a component based on class."""
+    return self._components[componentClass]
   
   
 class Component:
@@ -73,8 +81,6 @@ class Component:
   pickup component ID."""
   
   def __init__(self, entity):
-    # Meaningless ID!
-    self.id = None
     self._entity = entity
   
   def init(self, XMLRoot=None):
@@ -87,7 +93,7 @@ class Component:
   
   def postInit(self):
     """Called after all of the actor components have been populated."""
-    print("[WARNING] Component.postInit() not reimplemented")
+    pass
 
 
 class System:

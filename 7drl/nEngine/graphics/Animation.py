@@ -1,16 +1,35 @@
-from sfml import Drawable, Transformable
+from sfml import Drawable, Transformable, Rectangle
+
+import nEngine.graphics.ResourceManager
 
 class Frame:
-  def __init__(self, rect, duration, centerpoint = None):
+  def __init__(self, rect = None, duration = None, centerpoint = None):
     self._rect = rect
     self._duration = duration
     self._centerpoint = centerpoint
+    
+  def loadFromXML(self, XMLRoot):
+    split = XMLRoot.text.split(",")
+    self._duration = float(split[-1])
+    split = [int(p) for p in split[:-1]]
+    self._rect = Rectangle((split[0], split[1]), (split[2], split[3]))
+    self._centerpoint = (split[0], split[1])
+    
 
 
 class SpriteAnimation:
-  def __init__(self, texture):
+  def __init__(self, texture = None, frames = [], name = "SpriteAnimation"):
     self._texture = texture
-    self._frames = []
+    self._frames = frames
+    self._name = name
+  
+  def loadFromXML(self, XMLRoot):
+    self._name = XMLRoot.attributes["name"]
+    self._texture = nEngine.graphics.ResourceManager.ResourceManager.getTexture(XMLRoot.attributes["name"])
+    for frameRoot in XMLRoot:
+      frame = Frame()
+      frame.loadFromXML(frameRoot)
+      self._frames.append(frame)
   
   def addFrame(self, frame):
     self._frames.append(frame)
@@ -26,7 +45,7 @@ class SpriteAnimation:
 
 
 
-class AnimatedSprite(Drawable, Transformable):
+class AnimatedSprite:
   def __init__(self, animation):
     self._anim = animation
     self._frameNum

@@ -1,5 +1,5 @@
 import sfml
-from nEngine.graphics.Animation import Frame
+from nEngine.graphics.Animation import Frame, SpriteAnimation
 
 
 class ResourceManager:
@@ -26,10 +26,8 @@ class ResourceManager:
   @staticmethod
   def loadAnimations(self, XMLRoot):
     for animationRoot in XMLRoot:
-      ResourceManager.loadAnimation(animationRoot)
-  
-  @staticmethod
-  def loadAnimation(XMLRoot):
-    name = XMLRoot.find("name").text
-    for frameRoot in XMLRoot:
+      animation = SpriteAnimation()
+      animation.loadFromXML(animationRoot)
+      self._animations[animation._name] = animation
+      
       

@@ -1,0 +1,75 @@
+<entities componentBuilder="planet5521.data.ComponentBuilder">
+  <entity name="TaylorM77Bullet">
+    <PositionComponent/>
+    <VelocityComponent>
+      <vMax>50</vMax>
+    </VelocityComponent>
+    <DamageComponent>
+      <damage>5</damage>
+    </DamageComponent>
+    <BulletCollisionComponent />
+    <RangeComponent>
+      <range>150</range>
+    </RangeComponent>
+  </entity>
+  
+  <entity name="Proton Blast">
+    <PositionComponent/>
+    <VelocityComponent>
+      <vMax>200</vMax>
+    </VelocityComponent>
+    <DamageComponent>
+      <damage>5</damage>
+    </DamageComponent>
+    <BulletCollisionComponent />
+    <RangeComponent>
+      <range>150</range>
+    </RangeComponent>
+  </entity>
+
+  <entity name="ProtoBlaster">
+    <PositionComponent/>
+    <ShootingComponent>
+      <reload>2.0</reload>
+      <spread>3</spread>
+      <bullet>Proton Blast</bullet>
+    </ShootingComponent>
+  </entity>
+
+  <entity name="Taylor M77">
+    <PositionComponent/>
+    <ShootingComponent>
+      <reload>0.25</reload>
+      <spread>10</spread>
+      <bullet>TaylorM77Bullet</bullet>
+    </ShootingComponent>
+  </entity>
+
+  <entity name="XCC Grunt">
+    <PositionComponent/>
+    <VelocityComponent>
+      <vMax>5</vMax>
+    </VelocityComponent>
+    <HPComponent>
+      <HPMax>10</HPMax>
+    </HPComponent>
+    <WeaponComponent>
+      <weaponName>Taylor M77</weaponName>
+      <heldAtX>0</heldAtX>
+      <heldAtY>-10</heldAtY>
+    </WeaponComponent>
+  </entity>
+
+  <entity name="YTR Grunt">
+    <PositionComponent/>
+    <VelocityComponent>
+      <vMax>5</vMax>
+    </VelocityComponent>
+    <HPComponent>
+      <HPMax>10</HPMax>
+    </HPComponent>
+    <WeaponComponent>
+      <weaponName>ProtoBlaster</weaponName>
+    </WeaponComponent>
+  </entity>
+</entities>
