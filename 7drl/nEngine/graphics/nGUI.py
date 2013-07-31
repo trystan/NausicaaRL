@@ -248,6 +248,9 @@ class NGUIPane(NGUIBase):
     if mouseFocus != None:
       return mouseFocus
     return NGUIBase._getMouseFocus(self, position)
+  
+  
+  
   # HIERARCHY
   
   def addChild(self, child):
@@ -257,6 +260,9 @@ class NGUIPane(NGUIBase):
   def removeChild(self, child):
     child.setParent(None)
     self._children.remove(child)
+ 
+  def clear(self):
+    self._children = []
   
   # DRAWING
   
@@ -295,6 +301,7 @@ class NGUIBasicButton(NGUIBase):
   def __init__(self, x, y, w, h, text):
     NGUIPane.__init__(self, x, y, w, h)
     self._primed = False
+    
     self.text = text
     self.backgroundColour = Color(155,155,155)
     self.outlineColour = Color(200,200,200)
@@ -302,26 +309,28 @@ class NGUIBasicButton(NGUIBase):
     
     self.backgroundColourFocus = Color(180,180,180)
     self.outlineColourFocus = Color(230,230,230)
-    self.styleFocus = "default"
+    self.styleFocus = "default_focus"
     
     self.backgroundColourPrimed = Color(100,100,100)
     self.outlineColourPrimed = Color(150,150,150)
     self.stylePrimed = "default"
+    
+    self._margin = 2
     
     # So that whenever the button is defocused, it is also unprimed.
     self.addListener(self)
   
   def packToText(self, margin = 4):
     """Packs the box around the text default, with given margin."""
+    self._margin = margin
     textSprite = TextManager.renderText(self.text, self.style)
     rect = textSprite.local_bounds
-    self._w = rect.width + margin*2
-    self._h = rect.height + margin*2
+    self._w = rect.width + self._margin*2
+    self._h = rect.height + self._margin*2
   
   
   def onMouseDownEvent(self, event):
     self._primed = True
-    self.packToText()
     
   def onMouseUpEvent(self, event):
     self._primed = False
@@ -349,14 +358,13 @@ class NGUIBasicButton(NGUIBase):
     
     textSprite = TextManager.renderText(self.text, style)
     rect = textSprite.local_bounds
-    textSprite.position = (self._ax + self._w // 2 - rect.width // 2,
-                           self._ay + self._h // 2 - rect.height // 2)
+    # Needs rect.left and stuff because text local bounds are apparently non-0.
+    # Something to do with text alignment, perhaps? :)
+    textSprite.position = (self._ax + self._w // 2 - (rect.width // 2) - rect.left,
+                           self._ay + self._h // 2 - (rect.height // 2) - rect.top)
+
     view.drawSprite(textSprite)
     
-    
-class NGUIListSelector(NGUIFrame):
-  def __init__(self, x, y, w, h, backgroundColour = None):
-    NGUIPane.__init__(self, x, y, w, h, backgroundColour)
 
 
 class NGUIImage(NGUIBase):
@@ -367,6 +375,7 @@ class NGUIImage(NGUIBase):
   
   def draw(self, view):
     self._sprite.position = (self._ax, self._ay)
+    view.drawSprite(self._sprite)
 
 
 

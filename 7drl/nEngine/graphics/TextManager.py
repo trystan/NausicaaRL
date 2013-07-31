@@ -15,8 +15,10 @@ class TextStyle:
   
   def parseStyle(self, text):
     """Parse and save styles."""
-    tokens = [str.strip().upper() for str in text.split(",")]
     self.style = 0
+    if text == "" or text == None:
+      return
+    tokens = [str.strip().upper() for str in text.split(",")]
     for token in tokens:
       if token == "REGULAR":
         self.style = self.style | sfml.Text.REGULAR

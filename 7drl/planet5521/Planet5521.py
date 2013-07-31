@@ -13,6 +13,5 @@ class Planet5521(GameManager):
     self.humanView.init("Planet 5521", "planet5521/data/graphics.xml")
     TextManager.loadFromFile("planet5521/data/fonts.xml")
     
-    self._currentState = MainMenuState()
-    self._currentState.setHumanView(self.humanView)
+    self._currentState = MainMenuState(self.humanView)
 

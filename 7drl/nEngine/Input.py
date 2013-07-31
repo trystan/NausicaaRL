@@ -33,7 +33,7 @@ class Events:
     
 class Input:
   @staticmethod
-  def init(root, view):
+  def init(view):
     """Given the root of the keyconfig ElementTree, parses it and configures
     all the keys."""
     
@@ -53,7 +53,7 @@ class Input:
     Input.KeyToEvent = {}
     
     # For each game function
-    for child in root:
+    """for child in root:
       print("Parsing " + child.find("description").text + "...")
       
       # Obtain the variable names in string form
@@ -78,6 +78,7 @@ class Input:
       if typeElem != None:
         eventType = typeElem.text
         Events.getTypeList(eventType).append(getattr(Events, nameStr))
+      """
         
     
   

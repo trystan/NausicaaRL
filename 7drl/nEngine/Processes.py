@@ -67,19 +67,19 @@ class Process:
   def run(self, dt):
     """Run the process again. Implement!
        dt is how much time passed since last call."""
-    print("[WARNING] Process.run(dt) not reimplemented.")
+    pass
   
   def onFail(self):
     """Run upon failure. Reimplement."""
-    print("[WARNING] Process.onFail(dt) not reimplemented.")
+    pass
   
   def onSuccess(self):
     """Run upon success. Reimplement."""
-    print("[WARNING] Process.onSuccess(dt) not reimplemented.")
+    pass
   
   def onAbort(self):
     """Run upon success. Reimplement."""
-    print("[WARNING] Process.onAbort(dt) not reimplemented.")
+    pass
 
   def attachChild(self, process):
     """Attaches a child to execute if this process succeeds."""
@@ -102,6 +102,7 @@ def RunCallbackProcess(Process):
   how much time has passed, and calls them."""
   
   def __init__(self):
+    Process.__init__(self)
     self._callbacks = []
   
   def addCallback(self, callback):

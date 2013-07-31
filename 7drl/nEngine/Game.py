@@ -39,11 +39,11 @@ class GameState:
   def initialise(self):
     """Sets GameState in a ready-to-run situation. Reimplement. This is probably
     where you want to set stuff inside the ProcessManager!"""
-    print("[ERROR] GameState.initialise() not reimplemented")
+    pass
   
   def terminate(self):
     """Does final computation on this game state before it is removed."""
-    print("[ERROR] GameState.terminate() not reimplemented")
+    pass
     
   def nextState(self):
     """By default returns no next state."""

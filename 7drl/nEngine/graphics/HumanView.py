@@ -3,6 +3,7 @@ import sfml
 import xml.etree.ElementTree as ElementTree
 
 from nEngine.Utility import Utility
+from nEngine.Input import Input
 from nEngine.graphics.nGUI import NGUIPane
 from nEngine.graphics.TextManager import TextManager
 
@@ -22,6 +23,7 @@ class HumanView():
     for configNode in XMLroot:
       setattr(self, configNode.tag, Utility.convert(configNode.text))
     
+    Input.init(self)
     TextManager.init()
     
     # Creates screen
@@ -29,6 +31,9 @@ class HumanView():
     self._pane = NGUIPane(0, 0, self.WINDOW_WIDTH, self.WINDOW_HEIGHT)
     self._pane.name = "HumanView"
     self.mouseFocus = None
+  
+  def getPane(self):
+    return self._pane
 
     
   def getTexture(self, sourcefile):
